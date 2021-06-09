@@ -12,7 +12,7 @@ Modeling mtDNA habits
 
 > Diagram of a mitochondrion.
 
-![mitochondriumimage](mitochondrion image.jpg)
+![mitochondrion](mitochondrion image.jpg)
 
 > Image of a mitochondrion
 
