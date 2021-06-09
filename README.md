@@ -6,6 +6,10 @@ Modeling mtDNA habits
 
 ![Animal cell](Animal_cell_structure_en.svg)
 
-Cells have different sub-groups, the mitochondria are one of them.
+> Cells have different sub-groups, the mitochondria are one of them.
+
+![Mitochondria](Mitochondria.webp)
+
+> Diagram of a mitochondria.
 
 Malfunctioning mitochondria can have [negative health effects](https://www.umdf.org/what-is-mitochondrial-disease-2/0) such as fatigue and muscle weakness since they are responsible for making the majority of energy in the body.
