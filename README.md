@@ -23,5 +23,11 @@ Cells which have mitochondria ([eukaryotic](https://biologydictionary.net/eukary
 
 Mutated mtDNA can cause disease if they cannot carry out their function properly.
 
+## Clonal Expansion
+[Clonal expansion](https://royalsocietypublishing.org/doi/10.1098/rsob.200061) is when mtDNA mutations increase. It can happen as humans age or because of mitochondrial disease. Larger amounts of mutated mtDNA can also cause mitochondrial diseases.
+
+## Modelling mtDNA
+It is important to model mtDNA to gain a better understanding of it so treatment for many different mitochondrial diseases can be developed.
+
 
 
