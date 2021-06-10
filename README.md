@@ -8,11 +8,11 @@ Modeling mtDNA habits
 
 > Cells have different sub-groups, mitochondria are one of them.
 
-![Mitochondria](Mitochondria.webp)
+![Mitochondria](images/Mitochondrion_structure.svg)
 
 > Diagram of a mitochondrion.
 
-![mitochondrion](mitochondrion image.jpg)
+![mitochondrion](images/mitochondrion.webp)
 
 > Image of a mitochondrion
 
