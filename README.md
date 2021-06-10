@@ -8,7 +8,7 @@ Modeling mtDNA habits
 
 > Cells have different sub-groups, mitochondria are one of them.
 
-![Mitochondria](images/Mitochondrion_structure.svg)
+![Mitochondria](images/Mitochondrion_structure.png)
 
 > Diagram of a mitochondrion.
 
