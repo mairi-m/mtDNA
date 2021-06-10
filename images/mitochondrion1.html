@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8"><script type="text/javascript">(window.NREUM||(NREUM={})).init={privacy:{cookies_enabled:false}};(window.NREUM||(NREUM={})).loader_config={xpid:"UA8FUVBADwsIV1VaAgQD",licenseKey:"76fb58fb05",applicationID:"788348554"};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var i=e[n]={exports:{}};t[n][0].call(i.exports,function(e){var i=t[n][1][e];return r(i||e)},i,i.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(t,e,n){function r(t){try{s.console&&console.log(t)}catch(e){}}var i,o=t("ee"),a=t(25),s={};try{i=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,i.indexOf("dev")!==-1&&(s.dev=!0),i.indexOf("nr_dev")!==-1&&(s.nrDev=!0))}catch(c){}s.nrDev&&o.on("internal-error",function(t){r(t.stack)}),s.dev&&o.on("fn-err",function(t,e,n){r(n.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,e){return t}).join(", ")))},{}],2:[function(t,e,n){function r(t,e,n,r,s){try{p?p-=1:i(s||new UncaughtException(t,e,n),!0)}catch(f){try{o("ierr",[f,c.now(),!0])}catch(d){}}return"function"==typeof u&&u.apply(this,a(arguments))}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function i(t,e){var n=e?null:c.now();o("err",[t,n])}var o=t("handle"),a=t(26),s=t("ee"),c=t("loader"),f=t("gos"),u=window.onerror,d=!1,l="nr@seenError";if(!c.disabled){var p=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(h){"stack"in h&&(t(9),t(8),"addEventListener"in window&&t(5),c.xhrWrappable&&t(10),d=!0)}s.on("fn-start",function(t,e,n){d&&(p+=1)}),s.on("fn-err",function(t,e,n){d&&!n[l]&&(f(n,l,function(){return!0}),this.thrown=!0,i(n))}),s.on("fn-end",function(){d&&!this.thrown&&p>0&&(p-=1)}),s.on("internal-error",function(t){o("ierr",[t,c.now(),!0])})}},{}],3:[function(t,e,n){var r=t("loader");r.disabled||(r.features.ins=!0)},{}],4:[function(t,e,n){function r(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var i=t("ee"),o=t("handle"),a=t(9),s=t(8),c="learResourceTimings",f="addEventListener",u="resourcetimingbufferfull",d="bstResource",l="resource",p="-start",h="-end",m="fn"+p,w="fn"+h,v="bstTimer",g="pushState",y=t("loader");if(!y.disabled){y.features.stn=!0,t(7),"addEventListener"in window&&t(5);var x=NREUM.o.EV;i.on(m,function(t,e){var n=t[0];n instanceof x&&(this.bstStart=y.now())}),i.on(w,function(t,e){var n=t[0];n instanceof x&&o("bst",[n,e,this.bstStart,y.now()])}),a.on(m,function(t,e,n){this.bstStart=y.now(),this.bstType=n}),a.on(w,function(t,e){o(v,[e,this.bstStart,y.now(),this.bstType])}),s.on(m,function(){this.bstStart=y.now()}),s.on(w,function(t,e){o(v,[e,this.bstStart,y.now(),"requestAnimationFrame"])}),i.on(g+p,function(t){this.time=y.now(),this.startPath=location.pathname+location.hash}),i.on(g+h,function(t){o("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),f in window.performance&&(window.performance["c"+c]?window.performance[f](u,function(t){o(d,[window.performance.getEntriesByType(l)]),window.performance["c"+c]()},!1):window.performance[f]("webkit"+u,function(t){o(d,[window.performance.getEntriesByType(l)]),window.performance["webkitC"+c]()},!1)),document[f]("scroll",r,{passive:!0}),document[f]("keypress",r,!1),document[f]("click",r,!1)}}},{}],5:[function(t,e,n){function r(t){for(var e=t;e&&!e.hasOwnProperty(u);)e=Object.getPrototypeOf(e);e&&i(e)}function i(t){s.inPlace(t,[u,d],"-",o)}function o(t,e){return t[1]}var a=t("ee").get("events"),s=t("wrap-function")(a,!0),c=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";e.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(i(window),i(f.prototype)),a.on(u+"-start",function(t,e){var n=t[1],r=c(n,"nr@wrapped",function(){function t(){if("function"==typeof n.handleEvent)return n.handleEvent.apply(n,arguments)}var e={object:t,"function":n}[typeof n];return e?s(e,"fn-",null,e.name||"anonymous"):n});this.wrapped=t[1]=r}),a.on(d+"-start",function(t){t[1]=this.wrapped||t[1]})},{}],6:[function(t,e,n){function r(t,e,n){var r=t[e];"function"==typeof r&&(t[e]=function(){var t=o(arguments),e={};i.emit(n+"before-start",[t],e);var a;e[m]&&e[m].dt&&(a=e[m].dt);var s=r.apply(this,t);return i.emit(n+"start",[t,a],s),s.then(function(t){return i.emit(n+"end",[null,t],s),t},function(t){throw i.emit(n+"end",[t],s),t})})}var i=t("ee").get("fetch"),o=t(26),a=t(25);e.exports=i;var s=window,c="fetch-",f=c+"body-",u=["arrayBuffer","blob","json","text","formData"],d=s.Request,l=s.Response,p=s.fetch,h="prototype",m="nr@context";d&&l&&p&&(a(u,function(t,e){r(d[h],e,f),r(l[h],e,f)}),r(s,"fetch",c),i.on(c+"end",function(t,e){var n=this;if(e){var r=e.headers.get("content-length");null!==r&&(n.rxSize=r),i.emit(c+"done",[null,e],n)}else i.emit(c+"done",[t],n)}))},{}],7:[function(t,e,n){var r=t("ee").get("history"),i=t("wrap-function")(r);e.exports=r;var o=window.history&&window.history.constructor&&window.history.constructor.prototype,a=window.history;o&&o.pushState&&o.replaceState&&(a=o),i.inPlace(a,["pushState","replaceState"],"-")},{}],8:[function(t,e,n){var r=t("ee").get("raf"),i=t("wrap-function")(r),o="equestAnimationFrame";e.exports=r,i.inPlace(window,["r"+o,"mozR"+o,"webkitR"+o,"msR"+o],"raf-"),r.on("raf-start",function(t){t[0]=i(t[0],"fn-")})},{}],9:[function(t,e,n){function r(t,e,n){t[0]=a(t[0],"fn-",null,n)}function i(t,e,n){this.method=n,this.timerDuration=isNaN(t[1])?0:+t[1],t[0]=a(t[0],"fn-",this,n)}var o=t("ee").get("timer"),a=t("wrap-function")(o),s="setTimeout",c="setInterval",f="clearTimeout",u="-start",d="-";e.exports=o,a.inPlace(window,[s,"setImmediate"],s+d),a.inPlace(window,[c],c+d),a.inPlace(window,[f,"clearImmediate"],f+d),o.on(c+u,r),o.on(s+u,i)},{}],10:[function(t,e,n){function r(t,e){d.inPlace(e,["onreadystatechange"],"fn-",s)}function i(){var t=this,e=u.context(t);t.readyState>3&&!e.resolved&&(e.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,g,"fn-",s)}function o(t){y.push(t),h&&(b?b.then(a):w?w(a):(E=-E,R.data=E))}function a(){for(var t=0;t<y.length;t++)r([],y[t]);y.length&&(y=[])}function s(t,e){return e}function c(t,e){for(var n in t)e[n]=t[n];return e}t(5);var f=t("ee"),u=f.get("xhr"),d=t("wrap-function")(u),l=NREUM.o,p=l.XHR,h=l.MO,m=l.PR,w=l.SI,v="readystatechange",g=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],y=[];e.exports=u;var x=window.XMLHttpRequest=function(t){var e=new p(t);try{u.emit("new-xhr",[e],e),e.addEventListener(v,i,!1)}catch(n){try{u.emit("internal-error",[n])}catch(r){}}return e};if(c(p,x),x.prototype=p.prototype,d.inPlace(x.prototype,["open","send"],"-xhr-",s),u.on("send-xhr-start",function(t,e){r(t,e),o(e)}),u.on("open-xhr-start",r),h){var b=m&&m.resolve();if(!w&&!m){var E=1,R=document.createTextNode(E);new h(a).observe(R,{characterData:!0})}}else f.on("fn-end",function(t){t[0]&&t[0].type===v||a()})},{}],11:[function(t,e,n){function r(t){if(!s(t))return null;var e=window.NREUM;if(!e.loader_config)return null;var n=(e.loader_config.accountID||"").toString()||null,r=(e.loader_config.agentID||"").toString()||null,f=(e.loader_config.trustKey||"").toString()||null;if(!n||!r)return null;var h=p.generateSpanId(),m=p.generateTraceId(),w=Date.now(),v={spanId:h,traceId:m,timestamp:w};return(t.sameOrigin||c(t)&&l())&&(v.traceContextParentHeader=i(h,m),v.traceContextStateHeader=o(h,w,n,r,f)),(t.sameOrigin&&!u()||!t.sameOrigin&&c(t)&&d())&&(v.newrelicHeader=a(h,m,w,n,r,f)),v}function i(t,e){return"00-"+e+"-"+t+"-01"}function o(t,e,n,r,i){var o=0,a="",s=1,c="",f="";return i+"@nr="+o+"-"+s+"-"+n+"-"+r+"-"+t+"-"+a+"-"+c+"-"+f+"-"+e}function a(t,e,n,r,i,o){var a="btoa"in window&&"function"==typeof window.btoa;if(!a)return null;var s={v:[0,1],d:{ty:"Browser",ac:r,ap:i,id:t,tr:e,ti:n}};return o&&r!==o&&(s.d.tk=o),btoa(JSON.stringify(s))}function s(t){return f()&&c(t)}function c(t){var e=!1,n={};if("init"in NREUM&&"distributed_tracing"in NREUM.init&&(n=NREUM.init.distributed_tracing),t.sameOrigin)e=!0;else if(n.allowed_origins instanceof Array)for(var r=0;r<n.allowed_origins.length;r++){var i=h(n.allowed_origins[r]);if(t.hostname===i.hostname&&t.protocol===i.protocol&&t.port===i.port){e=!0;break}}return e}function f(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&!!NREUM.init.distributed_tracing.enabled}function u(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&!!NREUM.init.distributed_tracing.exclude_newrelic_header}function d(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&NREUM.init.distributed_tracing.cors_use_newrelic_header!==!1}function l(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&!!NREUM.init.distributed_tracing.cors_use_tracecontext_headers}var p=t(22),h=t(13);e.exports={generateTracePayload:r,shouldGenerateTrace:s}},{}],12:[function(t,e,n){function r(t){var e=this.params,n=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<l;r++)t.removeEventListener(d[r],this.listener,!1);e.aborted||(n.duration=a.now()-this.startTime,this.loadCaptureCalled||4!==t.readyState?null==e.status&&(e.status=0):o(this,t),n.cbTime=this.cbTime,u.emit("xhr-done",[t],t),s("xhr",[e,n,this.startTime]))}}function i(t,e){var n=c(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.parsedOrigin=c(e),t.sameOrigin=t.parsedOrigin.sameOrigin}function o(t,e){t.params.status=e.status;var n=w(e,t.lastSize);if(n&&(t.metrics.rxSize=n),t.sameOrigin){var r=e.getResponseHeader("X-NewRelic-App-Data");r&&(t.params.cat=r.split(", ").pop())}t.loadCaptureCalled=!0}var a=t("loader");if(a.xhrWrappable&&!a.disabled){var s=t("handle"),c=t(13),f=t(11).generateTracePayload,u=t("ee"),d=["load","error","abort","timeout"],l=d.length,p=t("id"),h=t(18),m=t(17),w=t(14),v=window.XMLHttpRequest;a.features.xhr=!0,t(10),t(6),u.on("new-xhr",function(t){var e=this;e.totalCbs=0,e.called=0,e.cbTime=0,e.end=r,e.ended=!1,e.xhrGuids={},e.lastSize=null,e.loadCaptureCalled=!1,e.params=this.params||{},e.metrics=this.metrics||{},t.addEventListener("load",function(n){o(e,t)},!1),h&&(h>34||h<10)||window.opera||t.addEventListener("progress",function(t){e.lastSize=t.loaded},!1)}),u.on("open-xhr-start",function(t){this.params={method:t[0]},i(this,t[1]),this.metrics={}}),u.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid);var n=f(this.parsedOrigin);if(n){var r=!1;n.newrelicHeader&&(e.setRequestHeader("newrelic",n.newrelicHeader),r=!0),n.traceContextParentHeader&&(e.setRequestHeader("traceparent",n.traceContextParentHeader),n.traceContextStateHeader&&e.setRequestHeader("tracestate",n.traceContextStateHeader),r=!0),r&&(this.dt=n)}}),u.on("send-xhr-start",function(t,e){var n=this.metrics,r=t[0],i=this;if(n&&r){var o=m(r);o&&(n.txSize=o)}this.startTime=a.now(),this.listener=function(t){try{"abort"!==t.type||i.loadCaptureCalled||(i.params.aborted=!0),("load"!==t.type||i.called===i.totalCbs&&(i.onloadCalled||"function"!=typeof e.onload))&&i.end(e)}catch(n){try{u.emit("internal-error",[n])}catch(r){}}};for(var s=0;s<l;s++)e.addEventListener(d[s],this.listener,!1)}),u.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),u.on("xhr-load-added",function(t,e){var n=""+p(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),u.on("xhr-load-removed",function(t,e){var n=""+p(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),u.on("addEventListener-end",function(t,e){e instanceof v&&"load"===t[0]&&u.emit("xhr-load-added",[t[1],t[2]],e)}),u.on("removeEventListener-end",function(t,e){e instanceof v&&"load"===t[0]&&u.emit("xhr-load-removed",[t[1],t[2]],e)}),u.on("fn-start",function(t,e,n){e instanceof v&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=a.now()))}),u.on("fn-end",function(t,e){this.xhrCbStart&&u.emit("xhr-cb-time",[a.now()-this.xhrCbStart,this.onload,e],e)}),u.on("fetch-before-start",function(t){function e(t,e){var n=!1;return e.newrelicHeader&&(t.set("newrelic",e.newrelicHeader),n=!0),e.traceContextParentHeader&&(t.set("traceparent",e.traceContextParentHeader),e.traceContextStateHeader&&t.set("tracestate",e.traceContextStateHeader),n=!0),n}var n,r=t[1]||{};"string"==typeof t[0]?n=t[0]:t[0]&&t[0].url?n=t[0].url:window.URL&&t[0]&&t[0]instanceof URL&&(n=t[0].href),n&&(this.parsedOrigin=c(n),this.sameOrigin=this.parsedOrigin.sameOrigin);var i=f(this.parsedOrigin);if(i&&(i.newrelicHeader||i.traceContextParentHeader))if("string"==typeof t[0]||window.URL&&t[0]&&t[0]instanceof URL){var o={};for(var a in r)o[a]=r[a];o.headers=new Headers(r.headers||{}),e(o.headers,i)&&(this.dt=i),t.length>1?t[1]=o:t.push(o)}else t[0]&&t[0].headers&&e(t[0].headers,i)&&(this.dt=i)})}},{}],13:[function(t,e,n){var r={};e.exports=function(t){if(t in r)return r[t];var e=document.createElement("a"),n=window.location,i={};e.href=t,i.port=e.port;var o=e.href.split("://");!i.port&&o[1]&&(i.port=o[1].split("/")[0].split("@").pop().split(":")[1]),i.port&&"0"!==i.port||(i.port="https"===o[0]?"443":"80"),i.hostname=e.hostname||n.hostname,i.pathname=e.pathname,i.protocol=o[0],"/"!==i.pathname.charAt(0)&&(i.pathname="/"+i.pathname);var a=!e.protocol||":"===e.protocol||e.protocol===n.protocol,s=e.hostname===document.domain&&e.port===n.port;return i.sameOrigin=a&&(!e.hostname||s),"/"===i.pathname&&(r[t]=i),i}},{}],14:[function(t,e,n){function r(t,e){var n=t.responseType;return"json"===n&&null!==e?e:"arraybuffer"===n||"blob"===n||"json"===n?i(t.response):"text"===n||""===n||void 0===n?i(t.responseText):void 0}var i=t(17);e.exports=r},{}],15:[function(t,e,n){function r(){}function i(t,e,n){return function(){return o(t,[f.now()].concat(s(arguments)),e?null:this,n),e?void 0:this}}var o=t("handle"),a=t(25),s=t(26),c=t("ee").get("tracer"),f=t("loader"),u=NREUM;"undefined"==typeof window.newrelic&&(newrelic=u);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",p=l+"ixn-";a(d,function(t,e){u[e]=i(l+e,!0,"api")}),u.addPageAction=i(l+"addPageAction",!0),u.setCurrentRouteName=i(l+"routeName",!0),e.exports=newrelic,u.interaction=function(){return(new r).get()};var h=r.prototype={createTracer:function(t,e){var n={},r=this,i="function"==typeof e;return o(p+"tracer",[f.now(),t,n],r),function(){if(c.emit((i?"":"no-")+"fn-start",[f.now(),r,i],n),i)try{return e.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],n),t}finally{c.emit("fn-end",[f.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){h[e]=i(p+e)}),newrelic.noticeError=function(t,e){"string"==typeof t&&(t=new Error(t)),o("err",[t,f.now(),!1,e])}},{}],16:[function(t,e,n){function r(t){if(NREUM.init){for(var e=NREUM.init,n=t.split("."),r=0;r<n.length-1;r++)if(e=e[n[r]],"object"!=typeof e)return;return e=e[n[n.length-1]]}}e.exports={getConfiguration:r}},{}],17:[function(t,e,n){e.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(e){return}}}},{}],18:[function(t,e,n){var r=0,i=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);i&&(r=+i[1]),e.exports=r},{}],19:[function(t,e,n){function r(){return s.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,s=t(27);e.exports=r,e.exports.offset=a,e.exports.getLastTimestamp=i},{}],20:[function(t,e,n){function r(t){return!(!t||!t.protocol||"file:"===t.protocol)}e.exports=r},{}],21:[function(t,e,n){function r(t,e){var n=t.getEntries();n.forEach(function(t){"first-paint"===t.name?d("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&d("timing",["fcp",Math.floor(t.startTime)])})}function i(t,e){var n=t.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(t){t.getEntries().forEach(function(t){t.hadRecentInput||d("cls",[t])})}function a(t){if(t instanceof h&&!w){var e=Math.round(t.timeStamp),n={type:t.type};e<=l.now()?n.fid=l.now()-e:e>l.offset&&e<=Date.now()?(e-=l.offset,n.fid=l.now()-e):e=l.now(),w=!0,d("timing",["fi",e,n])}}function s(t){d("pageHide",[l.now(),t])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var c,f,u,d=t("handle"),l=t("loader"),p=t(24),h=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){c=new PerformanceObserver(r);try{c.observe({entryTypes:["paint"]})}catch(m){}f=new PerformanceObserver(i);try{f.observe({entryTypes:["largest-contentful-paint"]})}catch(m){}u=new PerformanceObserver(o);try{u.observe({type:"layout-shift",buffered:!0})}catch(m){}}if("addEventListener"in document){var w=!1,v=["click","keydown","mousedown","pointerdown","touchstart"];v.forEach(function(t){document.addEventListener(t,a,!1)})}p(s)}},{}],22:[function(t,e,n){function r(){function t(){return e?15&e[n++]:16*Math.random()|0}var e=null,n=0,r=window.crypto||window.msCrypto;r&&r.getRandomValues&&(e=r.getRandomValues(new Uint8Array(31)));for(var i,o="xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx",a="",s=0;s<o.length;s++)i=o[s],"x"===i?a+=t().toString(16):"y"===i?(i=3&t()|8,a+=i.toString(16)):a+=i;return a}function i(){return a(16)}function o(){return a(32)}function a(t){function e(){return n?15&n[r++]:16*Math.random()|0}var n=null,r=0,i=window.crypto||window.msCrypto;i&&i.getRandomValues&&Uint8Array&&(n=i.getRandomValues(new Uint8Array(31)));for(var o=[],a=0;a<t;a++)o.push(e().toString(16));return o.join("")}e.exports={generateUuid:r,generateSpanId:i,generateTraceId:o}},{}],23:[function(t,e,n){function r(t,e){if(!i)return!1;if(t!==i)return!1;if(!e)return!0;if(!o)return!1;for(var n=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var s=navigator.userAgent,c=s.match(a);c&&s.indexOf("Chrome")===-1&&s.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],24:[function(t,e,n){function r(t){function e(){t(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,e,!1)}e.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],25:[function(t,e,n){function r(t,e){var n=[],r="",o=0;for(r in t)i.call(t,r)&&(n[o]=e(r,t[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],26:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,i=n-e||0,o=Array(i<0?0:i);++r<i;)o[r]=t[e+r];return o}e.exports=r},{}],27:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,e,n){function r(){}function i(t){function e(t){return t&&t instanceof r?t:t?f(t,c,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!p.aborted||o){t&&a&&t(n,r,i);for(var s=e(i),c=m(n),f=c.length,u=0;u<f;u++)c[u].apply(s,r);var l=d[y[n]];return l&&l.push([x,n,r,s]),s}}function o(t,e){g[t]=m(t).concat(e)}function h(t,e){var n=g[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function m(t){return g[t]||[]}function w(t){return l[t]=l[t]||i(n)}function v(t,e){p.aborted||u(t,function(t,n){e=e||"feature",y[n]=e,e in d||(d[e]=[])})}var g={},y={},x={on:o,addEventListener:o,removeEventListener:h,emit:n,get:w,listeners:m,context:e,buffer:v,abort:s,aborted:!1};return x}function o(t){return f(t,c,a)}function a(){return new r}function s(){(d.api||d.feature)&&(p.aborted=!0,d=p.backlog={})}var c="nr@context",f=t("gos"),u=t(25),d={},l={},p=e.exports=i();e.exports.getOrSetContext=o,p.backlog=d},{}],gos:[function(t,e,n){function r(t,e,n){if(i.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return t[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){i.buffer([t],r),i.emit(t,e,n)}var i=t("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,o,function(){return i++})}var i=1,o="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!S++){var t=O.info=NREUM.info,e=m.getElementsByTagName("script")[0];if(setTimeout(f.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return f.abort();c(E,function(e,n){t[e]||(t[e]=n)});var n=a();s("mark",["onload",n+O.offset],null,"api"),s("timing",["load",n]);var r=m.createElement("script");0===t.agent.indexOf("http://")||0===t.agent.indexOf("https://")?r.src=t.agent:r.src=p+"://"+t.agent,e.parentNode.insertBefore(r,e)}}function i(){"complete"===m.readyState&&o()}function o(){s("mark",["domContent",a()+O.offset],null,"api")}var a=t(19),s=t("handle"),c=t(25),f=t("ee"),u=t(23),d=t(20),l=t(16),p=l.getConfiguration("ssl")===!1?"http":"https",h=window,m=h.document,w="addEventListener",v="attachEvent",g=h.XMLHttpRequest,y=g&&g.prototype,x=!d(h.location);NREUM.o={ST:setTimeout,SI:h.setImmediate,CT:clearTimeout,XHR:g,REQ:h.Request,EV:h.Event,PR:h.Promise,MO:h.MutationObserver};var b=""+location,E={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1209.min.js"},R=g&&y&&y[w]&&!/CriOS/.test(navigator.userAgent),O=e.exports={offset:a.getLastTimestamp(),now:a,origin:b,features:{},xhrWrappable:R,userAgent:u,disabled:x};if(!x){t(15),t(21),m[w]?(m[w]("DOMContentLoaded",o,!1),h[w]("load",r,!1)):(m[v]("onreadystatechange",i),h[v]("onload",r)),s("mark",["firstbyte",a.getLastTimestamp()],null,"api");var S=0}},{}],"wrap-function":[function(t,e,n){function r(t,e){function n(e,n,r,c,f){function nrWrapper(){var o,a,u,l;try{a=this,o=d(arguments),u="function"==typeof r?r(o,a):r||{}}catch(p){i([p,"",[o,a,c],u],t)}s(n+"start",[o,a,c],u,f);try{return l=e.apply(a,o)}catch(h){throw s(n+"err",[o,a,h],u,f),h}finally{s(n+"end",[o,a,l],u,f)}}return a(e)?e:(n||(n=""),nrWrapper[l]=e,o(e,nrWrapper,t),nrWrapper)}function r(t,e,r,i,o){r||(r="");var s,c,f,u="-"===r.charAt(0);for(f=0;f<e.length;f++)c=e[f],s=t[c],a(s)||(t[c]=n(s,u?c+r:r,i,c,o))}function s(n,r,o,a){if(!h||e){var s=h;h=!0;try{t.emit(n,r,o,e,a)}catch(c){i([c,n,r,o],t)}h=s}}return t||(t=u),n.inPlace=r,n.flag=l,n}function i(t,e){e||(e=u);try{e.emit("internal-error",t)}catch(n){}}function o(t,e,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(t);return r.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(o){i([o],n)}for(var a in t)p.call(t,a)&&(e[a]=t[a]);return e}function a(t){return!(t&&t instanceof Function&&t.apply&&!t[l])}function s(t,e){var n=e(t);return n[l]=t,o(t,n,u),n}function c(t,e,n){var r=t[e];t[e]=s(r,n)}function f(){for(var t=arguments.length,e=new Array(t),n=0;n<t;++n)e[n]=arguments[n];return e}var u=t("ee"),d=t(26),l="nr@original",p=Object.prototype.hasOwnProperty,h=!1;e.exports=r,e.exports.wrapFunction=s,e.exports.wrapInPlace=c,e.exports.argsToArray=f},{}]},{},["loader",2,12,4,3]);</script>
+  <!--[if IE]><![endif]-->
+<meta name="keywords" content="" />
+<link rel="canonical" href="https://www.novusbio.com/research-areas/cellular-markers/mitochondrial-markers.html" />
+<meta name="baidu-site-verification" content="xQr2vSIwwB" />
+<title>Mitochondrial Markers: Novus Biologicals</title>
+<meta name="description" content="Learn about mitochondrial markers and check out all of our mitochondrial marker targets, including our popular COX1V, HSP60, and Mitofusin1." />
+<meta name="pubDate" content="200909" />
+<script id="json-ld" type="application/ld+json">[{"@context":"http://schema.org","@type":"SiteNavigationElement","about":[{"@type":"Thing","url":"/support/sars-cov-research-resources","name":"COVID-19 Research Tools"},{"@type":"Thing","url":"/productsearch/novus","name":"Antibodies"},{"@type":"Thing","url":"/products/primary-antibodies","name":"Primary Antibodies"},{"@type":"Thing","url":"/conjugatedantibodies.html","name":"Conjugated Antibodies"},{"@type":"Thing","url":"/samplesize","name":"Sample Size Antibodies"},{"@type":"Thing","url":"/products/crispr-cas9-genetic-knockout-antibody-validation-reproducibility","name":"KO Validated Antibodies"},{"@type":"Thing","url":"https://www.novusbio.com/recombinant-monoclonals","name":"Recombinant Antibodies"},{"@type":"Thing","url":"/product-type/antibody-packs","name":"Antibody Sampler Packs"},{"@type":"Thing","url":"/product-type/antibody-pairs","name":"Antibody Pairs"},{"@type":"Thing","url":"/support/GeneralSecondaryAntibodies","name":"Secondary Antibodies"},{"@type":"Thing","url":"/products/isotype-controls","name":"Isotype Control Antibodies"},{"@type":"Thing","url":"/product-type/peptides-and-proteins","name":"Proteins and Peptides"},{"@type":"Thing","url":"/products/peptides-and-proteins","name":"Peptides & Proteins"},{"@type":"Thing","url":"/support/blocking-with-immunizing-peptide","name":"Blocking Peptides"},{"@type":"Thing","url":"/product-type/peptides-and-proteins%3Fapplications%3DBioactivity","name":"Biologically Active Proteins"},{"@type":"Thing","url":"https://www.novusbio.com/product-type/lysates","name":"Lysates and Cell Lines"},{"@type":"Thing","url":"/product-type/lysates","name":"Lysates"},{"@type":"Thing","url":"/research-areas/stem-cells/stem-cell-lines.html","name":"Stem Cell Lines"},{"@type":"Thing","url":"/product-type/kits","name":"Kits"},{"@type":"Thing","url":"/Lightning-Link%20Antibody%20Labeling%20Kits","name":"Antibody Labeling Kits"},{"@type":"Thing","url":"/product-type/kits%3Fcategory%3DKits%26kit_type%3DChIP%2520Kit","name":"ChIP Kits"},{"@type":"Thing","url":"/products/elisa-kits","name":"ELISA Kits"},{"@type":"Thing","url":"/product-type/kits%3Fcategory%3DKits%26kit_type%3DFlow%2520Cytometry%2520Kit","name":"Flow Cytometry Kits"},{"@type":"Thing","url":"/research-areas/cell-biology/Exosome-research-tools","name":"Exosome Kits"},{"@type":"Thing","url":"/product-type/support-products%3Fcategory%3DSupport%2520Products%26applications%3DLigand%2520Activation","name":"Activators and Inhibitors"},{"@type":"Thing","url":"/product-type/inhibitors","name":"Inhibitors"},{"@type":"Thing","url":"/product-type/support-products%3Fcategory%3DSupport%2520Products%26applications%3DLigand%2520Activation","name":"Activators"},{"@type":"Thing","url":"/product-type/support-products","name":"Support Products"},{"@type":"Thing","url":"/products/flow-cytometry-quality-control-beads","name":"Flow Cytometry Beads"},{"@type":"Thing","url":"/control-slides","name":"IHC Tissue Slides"},{"@type":"Thing","url":"/tissue-microarrays","name":"IHC Microarrays"},{"@type":"Thing","url":"/search%3Fkeywords%3Drunblue","name":"Western Blot Gels & Buffers"},{"@type":"Thing","url":"/product-type/wb-membranes","name":"Western Blot Membranes"},{"@type":"Thing","url":"/product-type/support-products","name":"All Support Products"},{"@type":"Thing","url":"/support/bulk-and-custom.html","name":"Bulk and Custom"},{"@type":"Thing","url":"/support.html","name":"Resources"},{"@type":"Thing","url":"/support/support-by-application.html","name":"Protocols"},{"@type":"Thing","url":"/support/video-protocols","name":"Video Protocols"},{"@type":"Thing","url":"/support/troubleshooting","name":"Troubleshooting Guides"},{"@type":"Thing","url":"/mailing-list","name":"Posters and Literature"},{"@type":"Thing","url":"/support/handbooks-and-guides","name":"Handbooks and Guides"},{"@type":"Thing","url":"/resources/calculators","name":"Calculators"},{"@type":"Thing","url":"/support/faqs.html","name":"FAQs"},{"@type":"Thing","url":"/antibody-news","name":"Blogs"},{"@type":"Thing","url":"/all-diseases.html","name":"Diseases"},{"@type":"Thing","url":"/whitepapers.html","name":"Whitepapers"},{"@type":"Thing","url":"/webform/help-finding-antibodies","name":"Antibody Concierge"},{"@type":"Thing","url":"/webinar","name":"Webinars"},{"@type":"Thing","url":"/research-tools.html","name":"Tools"},{"@type":"Thing","url":"/spectraviewer","name":"Spectra Viewer"},{"@type":"Thing","url":"/novusknowsflow.html","name":"Flow Cytometry Panel Builder"},{"@type":"Thing","url":"/explorer","name":"Laverne - Bioinformatics Tool"},{"@type":"Thing","url":"/application","name":"Application"},{"@type":"Thing","url":"/application/elisa","name":"ELISA"},{"@type":"Thing","url":"/application/flow-cytometry","name":"Flow Cytometry"},{"@type":"Thing","url":"https://www.novusbio.com/products/antibodies-cytof","name":"Mass Cytometry (CyTOF)"},{"@type":"Thing","url":"/application/icc","name":"ICC"},{"@type":"Thing","url":"/application/ihc","name":"IHC"},{"@type":"Thing","url":"/application/western-blotting","name":"Western Blotting"},{"@type":"Thing","url":"/interviews","name":"Interviews"},{"@type":"Thing","url":"/faculty/faculty-interviews","name":"Faculty"},{"@type":"Thing","url":"/postdoc/postdoc-interviews","name":"Postdoc"},{"@type":"Thing","url":"/research-areas.html","name":"By Research Area"},{"@type":"Thing","url":"/apoptosis-pathway","name":"Apoptosis"},{"@type":"Thing","url":"/autophagy-pathway","name":"Autophagy"},{"@type":"Thing","url":"/research-areas/cancer","name":"Cancer"},{"@type":"Thing","url":"/research-areas/cell-biology","name":"Cell Biology"},{"@type":"Thing","url":"/research-areas/cellular-markers","name":"Cellular Markers"},{"@type":"Thing","url":"/research-areas/epigenetics","name":"Epigenetics"},{"@type":"Thing","url":"/research-areas/epitope-tags","name":"Epitope Tags"},{"@type":"Thing","url":"/research-areas/hypoxia","name":"Hypoxia"},{"@type":"Thing","url":"/research-areas/immunology","name":"Immunology"},{"@type":"Thing","url":"/research-areas/microbiology","name":"Microbiology"},{"@type":"Thing","url":"/research-areas/neuroscience","name":"Neuroscience"},{"@type":"Thing","url":"/research-areas/stem-cells","name":"Stem Cells"},{"@type":"Thing","url":"/pathwaypages.html","name":"By Pathway"},{"@type":"Thing","url":"/akt-signaling-pathway","name":"AKT "},{"@type":"Thing","url":"/mapkerkpathway.html","name":"ERK1/2/5 Pathway"},{"@type":"Thing","url":"/hedgehogpathway.html","name":"Hedgehog"},{"@type":"Thing","url":"/hippo-pathway.html","name":"Hippo"},{"@type":"Thing","url":"/jnk-signaling-pathway","name":"JNK Pathway"},{"@type":"Thing","url":"/mtor-pathway","name":"mTOR"},{"@type":"Thing","url":"/necroptosis-pathway","name":"Necroptosis"},{"@type":"Thing","url":"/nfkbpathway","name":"NFKB Signaling"},{"@type":"Thing","url":"/p38mapkpathway.html","name":"p38 Signaling"},{"@type":"Thing","url":"/tgfbetapathway","name":"TGF Beta"},{"@type":"Thing","url":"/toll-like-receptors","name":"TLR"},{"@type":"Thing","url":"/programs.html","name":"Customer Care"},{"@type":"Thing","url":"/guarantee","name":"100% Guarantee"},{"@type":"Thing","url":"/support/innovators-reward.html","name":"Risk Free Testing"},{"@type":"Thing","url":"/about/rewards.html","name":"Novus Rewards Program"},{"@type":"Thing","url":"/publications","name":"Publication Rewards Program"},{"@type":"Thing","url":"/newlab.html","name":"New Lab Discount"},{"@type":"Thing","url":"/scholarship-program.html","name":"Scholarship"},{"@type":"Thing","url":"/travelgrant.html","name":"Travel Grants"},{"@type":"Thing","url":"/products/promotions","name":"Promotions"},{"@type":"Thing","url":"/about.html","name":"About us"},{"@type":"Thing","url":"https://www.bio-techne.com/about/careers","name":"Careers"},{"@type":"Thing","url":"/about/collaborations.html","name":"Collaborations"},{"@type":"Thing","url":"/about/events","name":"Events"},{"@type":"Thing","url":"/about/novus-story.html","name":"Novus Story"},{"@type":"Thing","url":"/about/novus-team.html","name":"Our Team"},{"@type":"Thing","url":"/about/novus-philanthropy.html","name":"Philanthropy"},{"@type":"Thing","url":"/about/press-release.html","name":"Press Releases"},{"@type":"Thing","url":"/why-choose-novus.html","name":"Why choose Novus"},{"@type":"Thing","url":"/about/contact-us.html","name":"Contact Us"},{"@type":"Thing","url":"/about/contact-us.html","name":"Customer Service"},{"@type":"Thing","url":"/novus-distributors/list","name":"Distributors"},{"@type":"Thing","url":"/support/technical-support.html","name":"Technical Support"}]},{"@context":"http://schema.org","@type":"WPFooter","about":[{"@type":"Thing","url":"https://www.novusbio.com/productsearch/novus","name":"Antibodies"},{"@type":"Thing","url":"https://www.novusbio.com/product-type/secondary-antibodies","name":"Secondary Antibodies"},{"@type":"Thing","url":"https://www.novusbio.com/product-type/isotype-controls","name":"Isotype Controls"},{"@type":"Thing","url":"https://www.novusbio.com/product-type/peptides-and-proteins","name":"Proteins and Peptides"},{"@type":"Thing","url":"https://www.novusbio.com/product-type/elisa-kits","name":"ELISA Kits"},{"@type":"Thing","url":"https://www.novusbio.com/samplesize","name":"Sample Size"},{"@type":"Thing","url":"https://www.novusbio.comhttps://www.novusbio.com/new-product-information-page.html","name":"New Products"},{"@type":"Thing","url":"https://www.novusbio.com/about.html","name":"About Us"},{"@type":"Thing","url":"https://www.novusbio.comhttps://www.bio-techne.com/about/careers","name":"Careers"},{"@type":"Thing","url":"https://www.novusbio.com/support/quality-assurance.html","name":"Novus Guarantee"},{"@type":"Thing","url":"https://www.novusbio.com/about/contact-us.html","name":"Contact Us"},{"@type":"Thing","url":"https://www.novusbio.com/about/novus-team.html","name":"Our Team"},{"@type":"Thing","url":"https://www.novusbio.com/support/customer-service/privacy-policy.html","name":"Privacy Policy"},{"@type":"Thing","url":"https://www.novusbio.com/novus-bio-sitemap.html","name":"Sitemap"},{"@type":"Thing","url":"https://www.novusbio.com/about/contact-us.html","name":"Contact Us"},{"@type":"Thing","url":"https://www.novusbio.com/support/customer-service/terms.html","name":"Terms & Conditions"},{"@type":"Thing","url":"https://www.novusbio.com/support/technical-support.html","name":"Technical Support"},{"@type":"Thing","url":"https://www.novusbio.com/support/faqs.html","name":"FAQs"},{"@type":"Thing","url":"https://www.novusbio.com/explorer","name":"BioInformatics"},{"@type":"Thing","url":"https://www.novusbio.com/webform/help-finding-antibodies","name":"Help Finding Antibodies"},{"@type":"Thing","url":"https://www.novusbio.com/support/support-by-application.html","name":"Protocols"}]},{"@context":"http://schema.org","@type":"WebPage","breadcrumb":{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@context":"http://schema.org","@type":"ListItem","position":1,"item":{"@context":"http://schema.org","@type":"Thing","@id":"https://www.novusbio.com/","name":"Home"}},{"@context":"http://schema.org","@type":"ListItem","position":2,"item":{"@context":"http://schema.org","@type":"Thing","@id":"https://www.novusbio.com/research-areas/cellular-markers","name":"Cellular Markers"}}]}}]</script>
+<meta name="generator" content="Drupal 7 (https://www.drupal.org)" />
+<link rel="shortlink" href="https://www.novusbio.com/node/28686" />
+<meta property="og:site_name" content="Novus Biologicals" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.novusbio.com/research-areas/cellular-markers/mitochondrial-markers.html" />
+<meta property="og:title" content="Mitochondrial Markers" />
+<meta property="og:image" content="https://resources.bio-techne.com/images/Social/2019NovusLogo.png" />
+      <link type="text/css" rel="stylesheet" href="https://www.novusbio.com/sites/novusbio.com/files/advagg_css/css__HMNqtao0CqY7R708bPCXsKJNqlK5Byc6DWxoNU4KBco__aV19M_9qQBeVDYEV4AP273WnO9HSy1COk_z2WjKxVys__BHW4_UwOfUrqMuSS95peWb2I6XeVn_fPrDnCJA3QLKc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://www.novusbio.com/sites/novusbio.com/files/advagg_css/css__8q_96gZgqP6ghJ3d8PUkUwgjwwicVi3fT6-b1hC1MCI__IPSYBxWSMofw0qldt0lsDCmX3d-ZtF54OCGyUiAIhwo__BHW4_UwOfUrqMuSS95peWb2I6XeVn_fPrDnCJA3QLKc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://www.novusbio.com/sites/novusbio.com/files/advagg_css/css__tMut4snqI2QwgsP485ByuUbaZFSLBMRPdoIrPxrjcjQ__YCKWH2lDNwoDFGTB4WVMg9Vsp7V8W0wWJj9Hzc6NHN0__BHW4_UwOfUrqMuSS95peWb2I6XeVn_fPrDnCJA3QLKc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://www.novusbio.com/sites/novusbio.com/files/advagg_css/css__gcIW-ZdBtwaeIgUUAgYsDg0d4h8pQKP8AEnmu5fYkkw__BwX_G7odFrFvgsUW2GypxrYdgCNqESFFiEB0NF6huxg__BHW4_UwOfUrqMuSS95peWb2I6XeVn_fPrDnCJA3QLKc.css" media="all" />
+
+  <script type="text/javascript" src="https://www.novusbio.com/sites/novusbio.com/files/advagg_js/js__SlxZR0T0y0knhPGspoKKlEQqbk_RdNNsHwLrlCQRTSo__rf5Sb_Fn3bdzPai1gqhp9rakE151fjH7qHCIzkv5XEk__BHW4_UwOfUrqMuSS95peWb2I6XeVn_fPrDnCJA3QLKc.js" defer="defer"></script>
+<script type="text/javascript" src="https://www.novusbio.com/sites/novusbio.com/files/advagg_js/js__JUPWNSblz10zmF93kSzGzYzCmd65m2rBkbOQig3A1Go__BobO0RbwH2KvyM3slo7j5mKu05T8YsycM-KhwMwK9tE__BHW4_UwOfUrqMuSS95peWb2I6XeVn_fPrDnCJA3QLKc.js"></script>
+<script type="text/javascript" src="https://www.novusbio.com/sites/novusbio.com/files/advagg_js/js__bhKLY5jLn76FXwf7mqxIDxrsT55Zh4wTXRowAq15o5w__uqnqFN-E7uBuxz09L95Yru9GVZbkl7ua-zNxgVyu08o__BHW4_UwOfUrqMuSS95peWb2I6XeVn_fPrDnCJA3QLKc.js" defer="defer"></script>
+<script type="text/javascript" src="https://www.novusbio.com/sites/novusbio.com/files/advagg_js/js__sNg2Lmq7qtS1MGKXGW2OXmEWsICBLQFco5stYPzTzkk__ru4MiD30Uar6mSsZBOyFN5yO8bxrABZkEbSHzfX_J4k__BHW4_UwOfUrqMuSS95peWb2I6XeVn_fPrDnCJA3QLKc.js"></script>
+<script type="text/javascript" src="https://www.novusbio.com/sites/novusbio.com/files/advagg_js/js__dYDvxM-45pZnB-1FGwzY0UBQWUPPCXm-0U9SsjYZ4P8__KqoAytwUTNGAG3109TdafiVxupWIVdG2dSCsLIUfAKw__BHW4_UwOfUrqMuSS95peWb2I6XeVn_fPrDnCJA3QLKc.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var dataLayer=dataLayer||[];dataLayer.push({email:""});
+//--><!]]>
+</script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var dataLayer = dataLayer || []
+dataLayer.push({"event":"userRole","userRole":"anonymous user"});
+//--><!]]>
+</script>
+<script type="text/javascript" src="https://www.novusbio.com/sites/novusbio.com/files/advagg_js/js__7liA0Ps6dAXyZw8r81sv7l7tVZgbs9j9ry6Dkkr05t4__AsHwGAtuh5PEKYB8IbDY6WiulpUgUjqwLV5Jr9iENSU__BHW4_UwOfUrqMuSS95peWb2I6XeVn_fPrDnCJA3QLKc.js"></script>
+<script type="text/javascript" src="https://www.novusbio.com/sites/novusbio.com/files/advagg_js/js__Jta6fvKycGYG-tUOsYd1bBttaUUmhKZIBpf8PuhwP5I__HZkgCF861N_yqYAcjgmHMhLuUT5JZ8xrnUFQXHV4jLM__BHW4_UwOfUrqMuSS95peWb2I6XeVn_fPrDnCJA3QLKc.js"></script>
+<script type="text/javascript" src="https://www.novusbio.com/sites/novusbio.com/files/advagg_js/js__TuufeCXjwnHgkNfcigKjTtv2iR2nCBS2Z6EfidLgN2I__7RX_99At6-CvkYW7kjLTEozZRqL29uxyVT0faeBgiLw__BHW4_UwOfUrqMuSS95peWb2I6XeVn_fPrDnCJA3QLKc.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"novus","theme_token":"T7BJnVomltAu-ZtMwNffY_7DHpARK9e5Fv4RsmsH8f0","css":{"modules\/system\/system.base.css":1,"modules\/system\/system.menus.css":1,"modules\/system\/system.messages.css":1,"modules\/system\/system.theme.css":1,"sites\/all\/modules\/enterprise-tech\/et_javafunctions\/css\/datatables.css":1,"modules\/comment\/comment.css":1,"sites\/all\/modules\/contrib\/date\/date_api\/date.css":1,"sites\/all\/modules\/contrib\/date\/date_popup\/themes\/datepicker.1.7.css":1,"sites\/all\/modules\/enterprise-tech\/et_internationalization\/css\/et_internationalization.css":1,"sites\/all\/modules\/et_commerce\/et_quickorder\/css\/et_quickorder.css":1,"sites\/all\/modules\/enterprise-tech\/et_searchbar_autocomplete\/css\/et_searchbar_autocomplete.css":1,"modules\/field\/theme\/field.css":1,"modules\/node\/node.css":1,"sites\/novusbio.com\/modules\/custom\/novus_catalogrequest\/css\/novus_catalogrequest.css":1,"sites\/novusbio.com\/modules\/custom\/novus_shipping\/css\/novus_shipping.css":1,"sites\/novusbio.com\/modules\/custom\/novus_user_profile\/css\/novus_user_profile.css":1,"modules\/user\/user.css":1,"sites\/all\/modules\/contrib\/views\/css\/views.css":1,"sites\/novusbio.com\/modules\/wysiwyg_editor\/ckeditor\/css\/ckeditor.css":1,"sites\/all\/modules\/contrib\/colorbox\/styles\/stockholmsyndrome\/colorbox_style.css":1,"sites\/all\/modules\/contrib\/ctools\/css\/ctools.css":1,"sites\/all\/modules\/enterprise-tech\/et_messages\/et_messages_admin.css":1,"sites\/all\/modules\/enterprise-tech\/bt_brands_bar\/css\/bt_brands_bar.css":1,"sites\/all\/modules\/et_commerce\/et_commerce_extras\/modules\/et_cartdropdown\/css\/et_cartdropdown.css":1,"sites\/all\/modules\/enterprise-tech\/et_messages\/skins\/default\/et_messages.css":1,"sites\/all\/modules\/enterprise-tech\/et_cookie_policy\/css\/default_policy.css":1,"sites\/novusbio.com\/modules\/custom\/novus_researchareas\/css\/novus_researchareas.css":1,"sites\/novusbio.com\/themes\/novus\/css\/novus.css":1,"sites\/novusbio.com\/themes\/novus\/css\/960_16_col.css":1,"sites\/novusbio.com\/themes\/novus\/css\/960_12_col.css":1,"sites\/novusbio.com\/themes\/novus\/css\/better_messages.css":1,"sites\/novusbio.com\/themes\/novus\/css\/colorbox\/colorbox_style.css":1},"js":{"public:\/\/google_tag\/google_tag.script.js":1,"sites\/novusbio.com\/modules\/jquery_update\/replace\/jquery\/1.10\/jquery.min.js":1,"misc\/jquery-extend-3.4.0.js":1,"misc\/jquery-html-prefilter-3.5.0-backport.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"sites\/all\/modules\/enterprise-tech\/et_javafunctions\/js\/jquery_cookie.js":1,"sites\/all\/modules\/enterprise-tech\/et_javafunctions\/js\/jQuery_cycle2.js":1,"sites\/all\/modules\/enterprise-tech\/et_javafunctions\/js\/colorbox.1.5.js":1,"sites\/all\/modules\/enterprise-tech\/et_javafunctions\/js\/shockwave_flash.js":1,"sites\/all\/modules\/enterprise-tech\/et_javafunctions\/js\/jquery_datatables.js":1,"sites\/all\/modules\/enterprise-tech\/et_javafunctions\/js\/jquery_tablesorter.js":1,"sites\/all\/modules\/enterprise-tech\/et_javafunctions\/js\/jquery_hoverintent.js":1,"sites\/all\/modules\/enterprise-tech\/et_javafunctions\/js\/jquery_lazyload.js":1,"sites\/all\/modules\/enterprise-tech\/et_javafunctions\/js\/modernizr.js":1,"sites\/all\/modules\/enterprise-tech\/et_javafunctions\/js\/underscore.js":1,"sites\/novusbio.com\/modules\/jquery_update\/replace\/ui\/ui\/minified\/jquery.ui.effect.min.js":1,"sites\/novusbio.com\/modules\/jquery_update\/replace\/ui\/ui\/minified\/jquery.ui.effect-highlight.min.js":1,"sites\/all\/modules\/enterprise-tech\/et_onecall\/js\/et_onecall.js":1,"sites\/all\/modules\/et_commerce\/et_commerce_extras\/modules\/et_cartdropdown\/et_cartdropdown.js":1,"sites\/all\/modules\/enterprise-tech\/et_internationalization\/js\/et_internationalization.js":1,"sites\/all\/modules\/enterprise-tech\/et_javafunctions\/js\/jQuery_et.js":1,"sites\/all\/modules\/et_commerce\/et_quickorder\/et_quickorder.js":1,"sites\/all\/modules\/contrib\/marketo_ma\/js\/marketo_ma.js":1,"sites\/novusbio.com\/modules\/custom\/novus_shipping\/js\/novus_shipping.js":1,"sites\/novusbio.com\/libraries\/colorbox\/jquery.colorbox-min.js":1,"sites\/all\/modules\/contrib\/colorbox\/js\/colorbox.js":1,"sites\/all\/modules\/contrib\/colorbox\/styles\/stockholmsyndrome\/colorbox_style.js":1,"sites\/all\/modules\/enterprise-tech\/et_cookie_policy\/js\/et_cookie_policy.js":1,"sites\/all\/modules\/enterprise-tech\/et_internationalization\/js\/novus_distributors.js":1,"sites\/all\/modules\/enterprise-tech\/et_search\/json_viewer\/js\/jsonviewer.js":1,"sites\/all\/modules\/enterprise-tech\/et_searchbar_autocomplete\/js\/et_searchbar_autocomplete.js":1,"sites\/all\/modules\/enterprise-tech\/et_main_menu\/js\/main_menu.js":1,"sites\/all\/modules\/enterprise-tech\/et_searchbar\/js\/et_searchbar.js":1,"sites\/all\/modules\/enterprise-tech\/et_combined_seo\/js\/et_combined_seo.js":1,"sites\/all\/modules\/enterprise-tech\/et_messages\/et_messages.js":1,"sites\/novusbio.com\/modules\/custom\/novus_researchareas\/js\/novus_researchareas.js":1,"sites\/novusbio.com\/themes\/novus\/js\/novus.js":1,"sites\/novusbio.com\/themes\/novus\/css\/colorbox\/colorbox_style.js":1}},"colorbox":{"opacity":"0.85","current":"{current} of {total}","previous":"\u00ab Prev","next":"Next \u00bb","close":"Close","maxWidth":"98%","maxHeight":"98%","fixed":true,"mobiledetect":true,"mobiledevicewidth":"480px","specificPagesDefaultValue":"admin*\nimagebrowser*\nimg_assist*\nimce*\nnode\/add\/*\nnode\/*\/edit\nprint\/*\nprintpdf\/*\nsystem\/ajax\nsystem\/ajax\/*"},"et_internationalization":{"social":" \u003Ctable\u003E\n                       \u003Ctr\u003E\n                          \u003Ctd colspan=\u00222\u0022\u003E\n                            \u003Cp\u003E\n                               \u003Ca href=\u0022\/newsletter-signup\u0022 id=\u0022footer_newsletter_button\u0022 title=\u0022Newsletter Signup\u0022\u003E\n                                  Newsletter Signup\n                               \u003C\/a\u003E\n                            \u003C\/p\u003E\n                          \u003C\/td\u003E\n                        \u003C\/tr\u003E\n                        \u003Ctr\u003E\n                          \u003Ctd\u003E\u003Ca href=\u0022\/\/www.facebook.com\/NovusBiologicals\u0022 target=\u0022_blank\u0022\u003E\u003Cdiv class=\u0022fp_social_facebook\u0022\u003E\u003C\/div\u003E\u003C\/a\u003E\u003C\/td\u003E\n                          \u003Ctd\u003E\u003Ca href=\u0022\/\/www.facebook.com\/NovusBiologicals\u0022 target=\u0022_blank\u0022\u003EFind us on Facebook\u003C\/div\u003E\u003C\/a\u003E\u003C\/td\u003E\n                        \u003C\/tr\u003E\n                        \u003Ctr\u003E\n                          \u003Ctd\u003E\u003Ca href=\u0022\/\/twitter.com\/novusbio\u0022 target=\u0022_blank\u0022\u003E\u003Cdiv class=\u0022fp_social_twitter social\u0022\u003E\u003C\/div\u003E\u003C\/a\u003E\u003C\/td\u003E\n                          \u003Ctd\u003E\u003Ca href=\u0022\/\/twitter.com\/novusbio\u0022 target=\u0022_blank\u0022\u003E\u003Cdiv class=\u0022social_text\u0022\u003EFollow us on Twitter\u003C\/div\u003E\u003C\/a\u003E\u003C\/td\u003E\n                        \u003C\/tr\u003E\n                        \u003Ctr\u003E\n                          \u003Ctd\u003E\u003Ca href=\u0022\/\/www.youtube.com\/user\/NovusBiologicals\u0022 target=\u0022_blank\u0022\u003E\u003Cdiv class=\u0022fp_social_youtube social\u0022\u003E\u003C\/div\u003E\u003C\/a\u003E\u003C\/td\u003E\n                          \u003Ctd\u003E\u003Ca href=\u0022\/\/www.youtube.com\/user\/NovusBiologicals\u0022 target=\u0022_blank\u0022\u003E\u003Cdiv class=\u0022social_text\u0022\u003EWatch us on YouTube\u003C\/div\u003E\u003C\/a\u003E\u003C\/td\u003E\n                        \u003C\/tr\u003E\n                        \u003Ctr\u003E\n                          \u003Ctd\u003E\u003Ca href=\u0022\/\/www.linkedin.com\/company\/novus-biologicals-llc\u0022 target=\u0022_blank\u0022\u003E\u003Cdiv class=\u0022fp_social_linkedin social\u0022\u003E\u003C\/div\u003E\u003C\/a\u003E\u003C\/td\u003E\n                          \u003Ctd\u003E\u003Ca href=\u0022\/\/www.linkedin.com\/company\/novus-biologicals-llc\u0022 target=\u0022_blank\u0022\u003E\u003Cdiv class=\u0022social_text\u0022\u003EConnect with us on LinkedIn\u003C\/div\u003E\u003C\/a\u003E\u003C\/td\u003E\n                        \u003C\/tr\u003E\n                        \u003Ctr\u003E\n                          \u003Ctd\u003E\u003Ca href=\u0022\/\/www.pinterest.com\/novusbio\u0022 target=\u0022_blank\u0022\u003E\u003Cdiv class=\u0022fp_social_pinterest social\u0022\u003E\u003C\/div\u003E\u003C\/a\u003E\u003C\/td\u003E\n                          \u003Ctd\u003E\u003Ca href=\u0022\/\/www.pinterest.com\/novusbio\u0022 target=\u0022_blank\u0022\u003E\u003Cdiv class=\u0022social_text\u0022\u003EConnect with us on Pinterest\u003C\/div\u003E\u003C\/a\u003E\u003C\/td\u003E\n                        \u003C\/tr\u003E\n                        \u003Ctr\u003E\n                          \u003Ctd\u003E\u003Ca href=\u0022\/\/www.instagram.com\/novusbiologicals\u0022 target=\u0022_blank\u0022\u003E\u003Cdiv class=\u0022fp_social_instagram social\u0022\u003E\u003C\/div\u003E\u003C\/a\u003E\u003C\/td\u003E\n                          \u003Ctd\u003E\u003Ca href=\u0022\/\/www.instagram.com\/novusbiologicals\u0022 target=\u0022_blank\u0022\u003E\u003Cdiv class=\u0022social_text\u0022\u003EConnect with us on Instagram\u003C\/div\u003E\u003C\/a\u003E\u003C\/td\u003E\n                        \u003C\/tr\u003E\n                      \u003C\/table\u003E","distphone":""},"et_onecall":{"active":"true"},"et_searchbar":{"min_chars":3},"quickorder_dest":"research-areas\/cellular-markers\/mitochondrial-markers.html","marketo_ma":{"track":true,"key":"584-XSF-168","library":"\/\/munchkin.marketo.net\/munchkin.js","initParams":{"wsInfo":"jFRQ","asyncOnly":"true"}},"etMessages":{"position":"center","vertical":0,"horizontal":10,"fixed":1,"width":"400px","autoclose":0,"opendelay":0.29999999999999999,"disable_autoclose":0,"show_countdown":1,"hover_autoclose":1,"popin":{"effect":"fadeIn","duration":"slow"},"popout":{"effect":"fadeOut","duration":"slow"}}});
+//--><!]]>
+</script>
+
+      <link rel="shortcut icon" type="image/ico" href="//images.novusbio.com/design/faviconNew.ico"/>
+  <meta name="yandex-verification" content="e7c24419f013b549"/>
+<script >bazadebezolkohpepadr="2057869513"</script><script type="text/javascript" src="https://www.novusbio.com/akam/11/7aa899b1"  defer></script></head>
+<body class="html not-front not-logged-in no-sidebars page-node page-node- page-node-28686 node-type-research-area" >
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+  <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-52KXLL"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div id="skip-link">
+  <a href="#main-content" class="element-invisible element-focusable">Skip to main content</a>
+</div>
+<noscript aria-hidden="true"><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-52KXLL" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <div class="region region-bt-brands-bar">
+    <div id="block-bt-brands-bar-bt-brands-bar" class="block block-bt-brands-bar">
+
+    
+  <div class="content">
+    <div id="bt_brands_bar">
+  <div class="container_16">
+    <div style="margin-left: 0px; margin-right: 0px; width:960px;zoom:1;word-wrap:break-word;">
+      <ul>
+      <li><a href="https://www.bio-techne.com" rel="noopener noreferrer" target="_blank"><div class="brandsSprite_biotechne"></div></a></li><li><a href="https://www.rndsystems.com" rel="noopener noreferrer" target="_blank"><div class="brandsSprite_rndsystems"></div></a></li><li class="active"><div class="brandsSprite_novusbio_color"></div></li><li><a href="https://www.tocris.com" rel="noopener noreferrer" target="_blank"><div class="brandsSprite_tocris"></div></a></li><li><a href="https://www.proteinsimple.com" rel="noopener noreferrer" target="_blank"><div class="brandsSprite_proteinsimple"></div></a></li><li><a href="https://www.biospacific.com" rel="noopener noreferrer" target="_blank"><div class="brandsSprite_biospacific"></div></a></li><li><a href="http://www.cliniqa.com" rel="noopener noreferrer" target="_blank"><div class="brandsSprite_cliniqa"></div></a></li><li><a href="https://acdbio.com/ " rel="noopener noreferrer" target="_blank"><div class="brandsSprite_acd"></div></a></li><li><a href="http://www.rndheme.com" rel="noopener noreferrer" target="_blank"><div class="brandsSprite_rndheme"></div></a></li>    </ul>
+    </div>
+  </div>
+</div>  </div>
+</div>
+<div id="block-et-cookie-policy-cookie-policy" class="block block-et-cookie-policy">
+
+    
+  <div class="content">
+    <div></div>  </div>
+</div>
+  </div>
+<div class="overlay"></div>
+<div id="header">
+  <div class="bluewide_wrapper">
+    <div class="container_16">
+    <div class="grid_16">
+      <div id="top_bar">
+          <div class="region region-top-left-bar">
+    <div id="block-et-internationalization-novus-dist-short" class="block block-et-internationalization">
+
+    
+  <div class="content">
+    <div id="top_bar_support_info"><noscript>Support: 1-888-506-6887</noscript></div>  </div>
+</div>
+  </div>
+        <div id="top_bar_novus">
+            <div class="region region-top-right-bar">
+    <div id="block-et-cartdropdown-et-cartdropdown" class="block block-et-cartdropdown">
+
+    
+  <div class="content">
+    <a href="/cart" id="trigger-cart-dropdown">Items in Cart (<span id="cartcount">0</span>) <div class="fp_top_cart"></div></a>
+<div id="et-dropdown-content" style="display:none;">
+  <span id="et-dropdown-content-close">[X]</span>
+  <span id="et-dropdown-content-holder">&nbsp;</span>
+</div>  </div>
+</div>
+<div id="block-et-quickorder-et-quickorder" class="block block-et-quickorder">
+
+    
+  <div class="content">
+    <div id="quickOrder_topbar">Quick Order &nbsp;<div class="fp_quickorder_arrow"></div>
+<div id="quickOrder_dropdown">
+    </div>
+</div>  </div>
+</div>
+<div id="block-et-internationalization-country-dropdown" class="block block-et-internationalization">
+
+    
+  <div class="content">
+    
+    <div id="internationalization_country_select">
+      <div class="internationalization_drop"></div>
+    </div>  </div>
+</div>
+  </div>
+        </div>				     
+      </div>
+    </div>
+    </div>
+  </div>
+  
+  <div id="content-wrapper" class="container_16">
+    <div class="grid_4">
+      <div id="logo">
+          <a href="/"><img src="//images.novusbio.com/design/novus_color_RGB_small.png" alt="Novus Biologicals Logo"></a>
+      </div>
+    </div>
+    <div class="grid_12">
+        <div class="region region-login-area">
+    <div id="block-et-internationalization-sign-in" class="block block-et-internationalization">
+
+    
+  <div class="content">
+    <div id="sign_in"><a href="/user/login" rel="nofollow"><noscript>Account</noscript></a></div>  </div>
+</div>
+  </div>
+      <div class="search_form_container">
+  
+          <div class="region region-search-bar">
+    <div id="block-et-searchbar-et-searchbar-bar" class="block block-et-searchbar">
+
+    
+  <div class="content">
+    <div class="et_searchbar_wrapper">
+  <form name="et_searchbar" method="GET" action="/search" class="search_form"><div class="et_searchbar">
+  <input autocomplete="off" name="keywords" type="text" class="et_searchbar_wide et_searchbar_default" value="" placeholder="Enter Catalog #, Protein, or Keywords." data-default="" /><input type="submit" value="search" class="fp_mag_glass_wideSearch"></div></form><div class="et_spinner_small et_searchbar_spinner"></div>
+</div>  </div>
+</div>
+  </div>
+        <!--<form id="search-form" method="get" action="/search" onsubmit="return setClearSearchText('submit');" >
+          <input name="keywords" id="search-string" type="text" placeholder="Enter Catalog #, Protein, or Keywords." class="hide_spinner" />
+          <input type="submit" value="search" class="search_button" />
+        </form>-->
+      </div>
+    </div>
+    
+    <div class="clear"></div>
+  </div>
+</div>
+<div class="bluewide_wrapper">
+  <div class="container_16">
+    <div class="grid_16" id="main_menu">  <div class="region region-header">
+    <div id="block-et-main-menu-et-main-menu-block" class="block block-et-main-menu">
+
+    
+  <div class="content">
+     <div id="main_menu_wrapper">
+            <ul id="small_menu">
+              <li class="main_menu_parent">
+                <div class="main_menu_submenu"><div id="menu_products" class="menu_drop">
+        <div class="mm_menu"><ul class="menu"><li class="first expanded"><span title="" class="separator"><hr></span><ul class="menu"><li class="first leaf"><a href="/support/sars-cov-research-resources" title="">COVID-19 Research Tools</a></li>
+<li class="expanded"><a href="/productsearch/novus" title="">Antibodies</a><ul class="menu"><li class="first expanded"><a href="/products/primary-antibodies" title="">Primary Antibodies</a><ul class="menu"><li class="first leaf"><a href="/conjugatedantibodies.html" title="">Conjugated Antibodies</a></li>
+<li class="leaf"><a href="/samplesize" title="">Sample Size Antibodies</a></li>
+<li class="leaf"><a href="/products/crispr-cas9-genetic-knockout-antibody-validation-reproducibility" title="">KO Validated Antibodies</a></li>
+<li class="leaf"><a href="https://www.novusbio.com/recombinant-monoclonals" title="">Recombinant Antibodies</a></li>
+<li class="leaf"><a href="/product-type/antibody-packs" title="">Antibody Sampler Packs</a></li>
+<li class="last leaf"><a href="/product-type/antibody-pairs" title="">Antibody Pairs</a></li>
+</ul></li>
+<li class="leaf"><a href="/support/GeneralSecondaryAntibodies" title="">Secondary Antibodies</a></li>
+<li class="last leaf"><a href="/products/isotype-controls" title="">Isotype Control Antibodies</a></li>
+</ul></li>
+<li class="expanded"><a href="/product-type/peptides-and-proteins" title="">Proteins and Peptides</a><ul class="menu"><li class="first leaf"><a href="/products/peptides-and-proteins" title="">Peptides &amp; Proteins</a></li>
+<li class="leaf"><a href="/support/blocking-with-immunizing-peptide" title="">Blocking Peptides</a></li>
+<li class="last leaf"><a href="/product-type/peptides-and-proteins?applications=Bioactivity" title="">Biologically Active Proteins</a></li>
+</ul></li>
+<li class="last expanded"><a href="https://www.novusbio.com/product-type/lysates" title="">Lysates and Cell Lines</a><ul class="menu"><li class="first leaf"><a href="/product-type/lysates" title="">Lysates</a></li>
+<li class="last leaf"><a href="/research-areas/stem-cells/stem-cell-lines.html" title="">Stem Cell Lines</a></li>
+</ul></li>
+</ul></li>
+<li class="last expanded"><span title="" class="separator"><hr></span><ul class="menu"><li class="first expanded"><a href="/product-type/kits" title="">Kits</a><ul class="menu"><li class="first leaf"><a href="/Lightning-Link%20Antibody%20Labeling%20Kits" title="">Antibody Labeling Kits</a></li>
+<li class="leaf"><a href="/product-type/kits?category=Kits&amp;kit_type=ChIP%20Kit" title="">ChIP Kits</a></li>
+<li class="leaf"><a href="/products/elisa-kits" title="">ELISA Kits</a></li>
+<li class="leaf"><a href="/product-type/kits?category=Kits&amp;kit_type=Flow%20Cytometry%20Kit" title="">Flow Cytometry Kits</a></li>
+<li class="last leaf"><a href="/research-areas/cell-biology/Exosome-research-tools" title="">Exosome Kits</a></li>
+</ul></li>
+<li class="expanded"><a href="/product-type/support-products?category=Support%20Products&amp;applications=Ligand%20Activation" title="">Activators and Inhibitors</a><ul class="menu"><li class="first leaf"><a href="/product-type/inhibitors" title="">Inhibitors</a></li>
+<li class="last leaf"><a href="/product-type/support-products?category=Support%20Products&amp;applications=Ligand%20Activation" title="">Activators</a></li>
+</ul></li>
+<li class="expanded"><a href="/product-type/support-products" title="">Support Products</a><ul class="menu"><li class="first leaf"><a href="/products/flow-cytometry-quality-control-beads" title="Flow Cytometry Calibration, Compensation and Cell Counting Beads">Flow Cytometry Beads</a></li>
+<li class="leaf"><a href="/control-slides" title="">IHC Tissue Slides</a></li>
+<li class="leaf"><a href="/tissue-microarrays" title="">IHC Microarrays</a></li>
+<li class="leaf"><a href="/search?keywords=runblue" title="">Western Blot Gels &amp; Buffers</a></li>
+<li class="leaf"><a href="/product-type/wb-membranes" title="">Western Blot Membranes</a></li>
+<li class="last leaf"><a href="/product-type/support-products" title="">All Support Products</a></li>
+</ul></li>
+<li class="last leaf"><a href="/support/bulk-and-custom.html" title="">Bulk and Custom</a></li>
+</ul></li>
+</ul><div class="clear"></div></div>
+      </div></div>
+                <div class="menu_header">
+                <a href="/search?keywords=novus" class="main_menu_parent_link">Products</a>
+                </div>
+              </li>
+              <li class="main_menu_parent">
+                <div class="main_menu_submenu"><div id="menu_support" class="menu_drop">
+        <div class="mm_menu"><a href="/support/support-by-application.html"><div class="link_button link_protocols_button">Our Protocols</div></a><ul class="menu"><li class="first expanded"><span title="" class="separator"><hr></span><ul class="menu"><li class="first last expanded"><a href="/support.html" title="">Resources</a><ul class="menu"><li class="first leaf"><a href="/support/support-by-application.html" title="">Protocols</a></li>
+<li class="leaf"><a href="/support/video-protocols" title="">Video Protocols</a></li>
+<li class="leaf"><a href="/support/troubleshooting" title="">Troubleshooting Guides</a></li>
+<li class="leaf"><a href="/mailing-list" title="">Posters and Literature</a></li>
+<li class="leaf"><a href="/support/handbooks-and-guides" title="">Handbooks and Guides</a></li>
+<li class="leaf"><a href="/resources/calculators" title="">Calculators</a></li>
+<li class="leaf"><a href="/support/faqs.html" title="">FAQs</a></li>
+<li class="leaf"><a href="/antibody-news" title="">Blogs</a></li>
+<li class="leaf"><a href="/all-diseases.html" title="">Diseases</a></li>
+<li class="leaf"><a href="/whitepapers.html" title="">Whitepapers</a></li>
+<li class="leaf"><a href="/webform/help-finding-antibodies" title="">Antibody Concierge</a></li>
+<li class="last leaf"><a href="/webinar" title="">Webinars</a></li>
+</ul></li>
+</ul></li>
+<li class="last expanded"><span title="" class="separator"><hr></span><ul class="menu"><li class="first expanded"><a href="/research-tools.html" title="">Tools</a><ul class="menu"><li class="first leaf"><a href="/spectraviewer" title="">Spectra Viewer</a></li>
+<li class="leaf"><a href="/novusknowsflow.html" title="">Flow Cytometry Panel Builder</a></li>
+<li class="last leaf"><a href="/explorer" title="">Laverne - Bioinformatics Tool</a></li>
+</ul></li>
+<li class="expanded"><a href="/application" title="">Application</a><ul class="menu"><li class="first leaf"><a href="/application/elisa" title="">ELISA</a></li>
+<li class="leaf"><a href="/application/flow-cytometry" title="">Flow Cytometry</a></li>
+<li class="leaf"><a href="https://www.novusbio.com/products/antibodies-cytof" title="">Mass Cytometry (CyTOF)</a></li>
+<li class="leaf"><a href="/application/icc" title="">ICC</a></li>
+<li class="leaf"><a href="/application/ihc" title="">IHC</a></li>
+<li class="last leaf"><a href="/application/western-blotting" title="">Western Blotting</a></li>
+</ul></li>
+<li class="last expanded"><a href="/interviews" title="">Interviews</a><ul class="menu"><li class="first leaf"><a href="/faculty/faculty-interviews" title="">Faculty</a></li>
+<li class="last leaf"><a href="/postdoc/postdoc-interviews" title="">Postdoc</a></li>
+</ul></li>
+</ul></li>
+</ul><div class="clear"></div></div>
+      </div></div>
+                <div class="menu_header">
+                <a href="/support.html" class="main_menu_parent_link">Resources</a>
+                </div>
+              </li>
+              <li class="main_menu_parent">
+                <div class="main_menu_submenu"><div id="menu_ra" class="menu_drop">
+        <div class="mm_menu"><a href="/pathwaypages.html"><div class="link_button">View Pathways</div></a><ul class="menu"><li class="first expanded"><span title="" class="separator"><hr></span><ul class="menu"><li class="first last expanded"><a href="/research-areas.html" title="">By Research Area</a><ul class="menu"><li class="first leaf"><a href="/research-areas/apoptosis" title="">Apoptosis</a></li>
+<li class="leaf"><a href="/research-areas/autophagy" title="">Autophagy</a></li>
+<li class="leaf"><a href="/research-areas/cancer" title="">Cancer</a></li>
+<li class="leaf"><a href="/research-areas/cell-biology" title="">Cell Biology</a></li>
+<li class="leaf"><a href="/research-areas/cellular-markers" title="">Cellular Markers</a></li>
+<li class="leaf"><a href="/research-areas/epigenetics" title="">Epigenetics</a></li>
+<li class="leaf"><a href="/research-areas/epitope-tags" title="">Epitope Tags</a></li>
+<li class="leaf"><a href="/research-areas/hypoxia" title="">Hypoxia</a></li>
+<li class="leaf"><a href="/research-areas/immunology" title="">Immunology</a></li>
+<li class="leaf"><a href="/research-areas/microbiology" title="">Microbiology</a></li>
+<li class="leaf"><a href="/research-areas/neuroscience" title="">Neuroscience</a></li>
+<li class="last leaf"><a href="/research-areas/stem-cells" title="">Stem Cells</a></li>
+</ul></li>
+</ul></li>
+<li class="last expanded"><span title="" class="separator"><hr></span><ul class="menu"><li class="first last expanded"><a href="/pathwaypages.html" title="">By Pathway</a><ul class="menu"><li class="first leaf"><a href="/akt-signaling-pathway" title="">AKT </a></li>
+<li class="leaf"><a href="/apoptosis-pathway" title="">Apoptosis</a></li>
+<li class="leaf"><a href="/autophagy-pathway" title="">Autophagy</a></li>
+<li class="leaf"><a href="/mapkerkpathway.html" title="">ERK1/2/5 Pathway</a></li>
+<li class="leaf"><a href="/hedgehogpathway.html" title="">Hedgehog</a></li>
+<li class="leaf"><a href="/hippo-pathway.html" title="">Hippo</a></li>
+<li class="leaf"><a href="/jnk-signaling-pathway" title="">JNK Pathway</a></li>
+<li class="leaf"><a href="/mtor-pathway" title="">mTOR</a></li>
+<li class="leaf"><a href="/necroptosis-pathway" title="">Necroptosis</a></li>
+<li class="leaf"><a href="/nfkbpathway" title="">NFKB Signaling</a></li>
+<li class="leaf"><a href="/p38mapkpathway.html" title="">p38 Signaling</a></li>
+<li class="leaf"><a href="/tgfbetapathway" title="">TGF Beta</a></li>
+<li class="last leaf"><a href="/toll-like-receptors" title="">TLR</a></li>
+</ul></li>
+</ul></li>
+</ul><div class="clear"></div></div>
+      </div></div>
+                <div class="menu_header">
+                <a href="/research-areas.html" class="main_menu_parent_link">Research Areas</a>
+                </div>
+              </li>
+              <li class="main_menu_parent">
+                <div class="main_menu_submenu"><div id="menu_promotions" class="menu_drop">
+        <div class="mm_menu"><a href="/about/rewards.html"><div class="link_button">Get Rewards</div></a><ul class="menu"><li class="first last expanded"><span title="" class="separator"><hr></span><ul class="menu"><li class="first last expanded"><a href="/programs.html" title="">Customer Care</a><ul class="menu"><li class="first leaf"><a href="/guarantee" title="">100% Guarantee</a></li>
+<li class="leaf"><a href="/support/innovators-reward.html" title="">Risk Free Testing</a></li>
+<li class="leaf"><a href="/about/rewards.html" title="">Novus Rewards Program</a></li>
+<li class="leaf"><a href="/publications" title="">Publication Rewards Program</a></li>
+<li class="leaf"><a href="/newlab.html" title="">New Lab Discount</a></li>
+<li class="leaf"><a href="/scholarship-program.html" title="">Scholarship</a></li>
+<li class="leaf"><a href="/travelgrant.html" title="">Travel Grants</a></li>
+<li class="last leaf"><a href="/products/promotions" title="">Promotions</a></li>
+</ul></li>
+</ul></li>
+</ul><div class="clear"></div></div>
+      </div></div>
+                <div class="menu_header">
+                <a href="/programs.html" class="main_menu_parent_link">Customer Care</a>
+                </div>
+              </li>
+              <li class="main_menu_parent">
+                <div class="main_menu_submenu"><div id="menu_about" class="menu_drop">
+        <div class="mm_menu"><a href="/about/careers-at-novus.html"><div class="link_button">Novus Careers</div></a><ul class="menu"><li class="first last expanded"><span title="" class="separator"><hr></span><ul class="menu"><li class="first last expanded"><a href="/about.html" title="">About us</a><ul class="menu"><li class="first leaf"><a href="https://www.bio-techne.com/about/careers" title="">Careers</a></li>
+<li class="leaf"><a href="/about/collaborations.html" title="">Collaborations</a></li>
+<li class="leaf"><a href="/about/events" title="Events">Events</a></li>
+<li class="leaf"><a href="/about/novus-story.html" title="">Novus Story</a></li>
+<li class="leaf"><a href="/about/novus-team.html" title="">Our Team</a></li>
+<li class="leaf"><a href="/about/novus-philanthropy.html" title="">Philanthropy</a></li>
+<li class="leaf"><a href="/about/press-release.html" title="">Press Releases</a></li>
+<li class="last leaf"><a href="/why-choose-novus.html" title="">Why choose Novus</a></li>
+</ul></li>
+</ul></li>
+</ul><div class="clear"></div></div>
+      </div></div>
+                <div class="menu_header">
+                <a href="/about.html" class="main_menu_parent_link">About Us</a>
+                </div>
+              </li>
+              <li class="main_menu_parent">
+                <div class="main_menu_submenu"><div id="menu_contact" class="menu_drop">
+        <div class="mm_menu"><ul class="menu"><li class="first last expanded"><span title="" class="separator"><hr></span><ul class="menu"><li class="first last expanded"><a href="/about/contact-us.html" title="">Contact Us</a><ul class="menu"><li class="first leaf"><a href="/about/contact-us.html" title="">Customer Service</a></li>
+<li class="leaf"><a href="/novus-distributors/list" title="">Distributors</a></li>
+<li class="last leaf"><a href="/support/technical-support.html" title="">Technical Support</a></li>
+</ul></li>
+</ul></li>
+</ul><div class="clear"></div></div>
+      </div></div>
+                <div class="menu_header">
+                <a href="/about/contact-us.html" class="main_menu_parent_link">Contact</a>
+                </div>
+              </li>
+            </ul>
+            </div>  </div>
+</div>
+  </div>
+</div>
+  </div>
+</div>
+<div id="caspertesting">    <div class="container_16">
+        <div id="page-breadcrumb" class="grid_16">
+                        <div class="breadcrumb"><a href="/">Home</a> &#187; <a href="/research-areas.html">Research Areas</a> &#187; <a href="/research-areas/cellular-markers.html">Cellular Markers</a> &#187; Mitochondrial Markers</div>            <div class="clear"></div>
+            <div class="ra-header"><img src="https://images.novusbio.com/design/bannerMarkers03.jpg" class="ra-header" alt="Mitochondrial Markers" /></div>        </div>
+        <div class="main grid_4">
+            <div class="ra-menu"><ul><li><a href="/research-areas/cellular-markers">Cellular Markers</a></li><li><a href="/research-areas/cellular-markers/caveolae-markers.html">Caveolae Markers</a></li><li><a href="/research-areas/cellular-markers/centrosome-markers.html">Centrosome Markers</a></li><li><a href="/research-areas/cellular-markers/cytoskeletal-markers">Cytoskeletal Markers</a></li><li><a href="/research-areas/cellular-markers/dendritic-cell-markers.html">Dendritic Cell Markers</a></li><li><a href="/research-areas/cellular-markers/endosome-markers">Endosome Markers</a></li><li><a href="/research-areas/cellular-markers/endothelial-cell-markers.html">Endothelial Cell Markers</a></li><li><a href="/research-areas/cellular-markers/er-markers.html">ER Markers</a></li><li><a href="/research-areas/cellular-markers/fibroblast-cell-markers.html">Fibroblast Cell Markers</a></li><li><a href="/research-areas/cellular-markers/golgi-apparatus-markers.html">Golgi Apparatus Markers</a></li><li><a href="/research-areas/cellular-markers/loading-controls.html">Loading Controls</a></li><li><a href="/research-areas/cellular-markers/lysosome-markers">Lysosome Markers</a></li><li><a href="/research-areas/cellular-markers/membrane-markers">Membrane Markers</a></li><li><a href="/research-areas/cellular-markers/membrane-vesicle-markers.html">Membrane Vesicle Markers</a></li><li class="active"><a href="/research-areas/cellular-markers/mitochondrial-markers.html">Mitochondrial Markers</a></li><li><a href="/research-areas/cellular-markers/myeloid-cell-markers.html">Myeloid Cell Markers</a></li><li><a href="/research-areas/cellular-markers/nuclear-envelope-markers.html">Nuclear Envelope Markers</a></li><li><a href="/research-areas/cellular-markers/peroxisome-markers.html">Peroxisome Markers</a></li><li><a href="/research-areas/cellular-markers/plasma-membrane-markers.html">Plasma Membrane Markers</a></li></ul></div><div class="ra-charities"><div class="ra-left-header">Charities</div><div class="ra-left-body"><span class="ra-button-span"><a href="mailto:marketing@novusbio.com?subject=Charity%20Submission%20for%20Mitochondrial+Markers" class="ra-button">Submit a Charity</a></span><div class="clear"></div></div></div><div class="ra-events"><div class="ra-left-header">Events</div><div class="ra-left-body"><p class="ra-events-blurb"><span class="ra-events-image">&nbsp;</span>Submit your event on Mitochondrial Markers to be featured.</p><span class="ra-button-span"><a href="mailto:marketing@novusbio.com?subject=Event%20Submission%20for%20Mitochondrial+Markers&amp;body%3DEvent%20Name%3A%0ADescription%3A%0ADates%3A%0ATime%3A%0ALocation%3A%0AMore%20information%20URL%3A%0AImage%20%28please%20attach%20any%20relevant%20images%29" class="ra-button">Submit an Event</a></span><div class="clear"></div></div></div>        </div>
+        <div class="main grid_12">
+                        <p>&nbsp;</p>
+
+<h2>What are mitochondria?</h2>
+
+<p><span style="font-family:arial,helvetica,sans-serif">Mitochondria are compartmentalized, dual-membrane organelles that are responsible for most energy production in the cell. Mitochondria contain their own DNA and ribosomes. Their primary function is to convert energy from glucose into ATP via oxidative phosphorylation. Mitochondria also play an important role in the cellular stress response through processes such as <a href="/research-areas/autophagy">autophagy</a>, <a href="/research-areas/apoptosis">apoptosis</a>, and <a href="/research-areas/hypoxia">hypoxia</a>. Mitochondrial dysfunction is implicated in many human diseases including <a href="/research-areas/cancer">cancer</a>, <a href="/research-areas/neuroscience/neurodegeneration">neurodegenerative disorders</a>, and <a href="https://www.bio-techne.com/resources/literature/metabolic-syndrome-signaling" target="_blank">metabolic syndrome</a>. </span></p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<div><img alt="Schematic showing the key players of the ENS with the neuronal connections innervating the intestinal layers, the metabolites that are circulated to the CNS, and the proteins expressed by the vagus nerve and spinal cord." src="https://images.novusbio.com/design/Mitochondrial_Illustration_v3.jpg" style="width:600px" title="Schematic highlighting the ENS network." /></div>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<h3>Common Mitochondrial Markers</h3>
+<table cellpadding="6" cellspacing="6" style="width:100%">
+	<tbody>
+		<tr>
+			<td><a href="/common-name/aif">AIF</a></td>
+			<td><a href="/common-name/gcsh">GCSH</a></td>
+			<td><a href="/common-name/mrpl40">MRPL40</a></td>
+			<td><a href="/common-name/timm23">TIMM23</a></td>
+		</tr>
+		<tr>
+			<td><a href="/common-name/atp5a">ATP5A</a></td>
+			<td><a href="/common-name/hsp60">HSP60</a></td>
+			<td><a href="/common-name/opa1">OPA1</a></td>
+			<td><a href="/common-name/tom70">TOM70</a></td>
+		</tr>
+		<tr>
+			<td><a href="/common-name/atp5f1">ATP5F1</a></td>
+			<td><a href="/common-name/mitochondria">Mitochondria</a></td>
+			<td><a href="/common-name/oxa1l">OXA1L</a></td>
+			<td><a href="/common-name/tomm20">TOMM20</a></td>
+		</tr>
+		<tr>
+			<td><a href="/common-name/bcs1l">BCS1L</a></td>
+			<td><a href="/common-name/mitofilin">Mitofilin</a></td>
+			<td><a href="/common-name/prohibitin">Prohibitin</a></td>
+			<td><a href="/common-name/tufm">TUFM</a></td>
+		</tr>
+		<tr>
+			<td><a href="/common-name/cox4">COX4</a></td>
+			<td><a href="/common-name/mitofusin-1">Mitofusin 1</a></td>
+			<td><a href="/common-name/sdhb">SDHB</a></td>
+			<td><a href="/common-name/uqcrc1">UQCRC1</a></td>
+		</tr>
+		<tr>
+			<td><a href="/common-name/cox5b">COX5b</a></td>
+			<td><a href="/common-name/mitofusin-2">Mitofusin 2</a></td>
+			<td><a href="/common-name/ssbp1">SSBP1</a></td>
+			<td><a href="/common-name/vdac1">VDAC1 </a></td>
+		</tr>
+  </tbody>
+</table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<table>
+	<tbody>
+		<tr>
+			<td><a href="#Apoptosis"><img alt="Apoptosis" src="https://images.novusbio.com/design/Apoptosis_Anchor_Img.jpg" /></a></td>
+			<td><a href="#Oxidative Phosphorylation"><img alt="Oxidative Phosphorylation" src="https://images.novusbio.com/design/Oxidative_phosphorylation_Anchor_img.jpg" /></a></td>
+			<td><a href="#Mitochondrial Dynamics"><img alt="Mitochondrial Dynamics" src="https://images.novusbio.com/design/Mitochondrial_Dynammics_Anchor_Img.jpg" /></a></td>
+			<td><a href="#Additional Mitochondrial Markers"><img alt="Additional Mitochondrial Markers" src="https://images.novusbio.com/design/Additional_Mitochondrial_Anchor_Img.jpg" /></a></td>
+		</tr>
+	</tbody>
+</table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<h2>What are mitochondrial marker antibodies used for?</h2>
+<p><span style="font-family:arial,helvetica,sans-serif">In response to stress or other biological cues, a protein’s subcellular distribution can change, indicative of the physiological state of the cell or tissue. Mitochondrial markers are used as well-established references when investigating the localization of a protein of interest and in microscopy furnishes additional details about mitochondrial structure and morphology. Mitochondrial markers also serve as quality controls. The purity of protein extracts derived from subcellular fractionation (Novus Biologicals <a href="/products/mitochondria-kit_nbp2-29448">Mitochondrial Isolation Kit</a>) can be examined in Western Blot to assess potential cross contamination of fractions (e.x. nucleus, cytosol, and mitochondria). Novus offers numerous highly published, well validated antibodies for mitochondrial markers along with bright, photostable, fluorescent conjugates such as <a href="/products/janelia-fluor">Janelia Fluor<sup>®</sup> Dyes</a>, for studying these complex, dynamic organelles. <a href="https://www.tocris.com/product-type/janelia-fluor-dyes">Janelia Fluor<sup>®</sup> Dyes</a> are optimal for live cell imaging and super resolution microscopy, enabling superior detection and analysis of cellular targets.</span></p>
+
+<p>&nbsp;</p>
+
+<p align="center"><a class="link_button" href="/research-area/Mitochondrial Markers">View Mitochondrial Marker Reagents</a></p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<table align="center" cellpadding="5" cellspacing="5" style="width:600px">
+	<tbody>
+		<tr>
+			<td><img alt="Western blot of lysates from mouse monocyte/macrophage cell line both untreated and treated with LPS, probed with goat polyclonal anti-IL-6 antibody, followed by anti-goat HRP-conjugated secondary antibody showing band in treated lane." src="https://images.novusbio.com/design/Immunofluorescent-image-Tomm20_220x220.jpg" style="width:275px" title="Mouse monocyte/macrophage cell line lysates untreated and treated with LPS and probed with goat polyclonal anti-IL-6 antibody, WB." /></td>
+			<td><em>Image with super-resolution radial fluctuations microscopy analysis of outer mitochondrial membrane protein Tomm20 in HeLa cells. Tomm20 was detected using 1 µg/ml <a href="/products/tomm20-antibody_nbp1-81556">Rabbit anti-Tomm20 (NBP1-81556)</a> and 1:500 <a href="/search?category=Secondary%20Antibodies&amp;facet_conjugate=Janelia%20Fluor%20646&amp;species=Rabbit">JF646-conjugated anti-Rabbit secondary antibody</a> (red) and counterstained with DAPI (blue). Scale bar: 10 μm. Experiment run by Jill Jenkins and images acquired at the Advanced Light Microscopy Core Facility, University of Colorado. </em></td>
+		</tr>
+	</tbody>
+</table>
+
+<p><br />
+<a name="Apoptosis"></a></p>
+
+<p>&nbsp;</p>
+
+<h3>Apoptosis</h3>
+
+<p><span style="font-family:arial,helvetica,sans-serif">Mitochondria play a crucial role in <a href="/research-areas/apoptosis">apoptosis</a>, a form of programmed cell death, that is essential for establishing proper tissue homeostasis and is often dysregulated in cancer. The intrinsic/mitochondrial apoptosis pathway is initiated by factors including DNA damage and oxidative stress, leading to caspase activation and cell death. In mammals, apoptosis is a complex process largely regulated by the Bcl-2 family of proteins that are either pro-apoptotic (e.g. <a href="/common-name/bax">Bax</a>, <a href="/common-name/bak">Bak</a>) or anti-apoptotic (e.g. <a href="/common-name/bcl-2">Bcl-2</a>). In response to apoptotic stimuli, Bax/Bak become activated and Bax translocates to the mitochondria. The subsequent oligomerization of Bax/Bak promotes mitochondrial outer membrane permeabilization (MOMP), <a href="/common-name/cytochrome-c">cytochrome c</a> release and apoptosome formation. The resulting signaling cascade involving <a href="/common-name/caspase-9">caspase-9</a> and <a href="/common-name/caspase-3">caspase-3</a> activation ultimately leads to cell disassembly. </span></p>
+
+<p>&nbsp;</p>
+
+<table cellpadding="6" cellspacing="6" style="width:100%">
+	<tbody>
+		<tr bgcolor="#005F9E">
+			<td><span style="color: #FFFFFF; font-weight: bold;">Antibody Name</span></td>
+			<td><span style="color: #FFFFFF; font-weight: bold;">Location</span></td>
+			<td><span style="color: #FFFFFF; font-weight: bold;">Function</span></td>
+		</tr>
+		<tr style="border-bottom-style: solid; border-color:#005f9e; border-width: 1px;">
+			<td><a href="/products/aif-antibody_nbp2-27177">AIF (Apoptosis Inducing Factor)</a></td>
+			<td>Intermembrane space</td>
+			<td>Oxidoreductase that contributes to assembly of the respiratory chain and cell death. AIF deficiency leads to mitochondrial dysfunction.</td>
+		</tr>
+		<tr style="border-bottom-style: solid; border-color:#005f9e; border-width: 1px;">
+			<td><a href="/products/apaf-1-antibody_nb100-56074">APAF-1</a></td>
+			<td>Cytoplasm (outside mitochondria)</td>
+			<td>Mediates formation of the apoptosme by binding cytochrome c following its release into the cytoplasm in the presence of ATP.</td>
+		</tr>
+		<tr style="border-bottom-style: solid; border-color:#005f9e; border-width: 1px;">
+			<td><a href="/products/cytochrome-c-antibody-7h82c12_nb100-56503">Cytochrome c</a></td>
+			<td>Intermembrane space</td>
+			<td>Role in electron transport and mediator of apoptosis. Released from mitochondria into cytoplasm and initiates apoptotic cascade and cell death.</td>
+		</tr>
+		<tr style="border-bottom-style: solid; border-color:#005f9e; border-width: 1px;">
+			<td><a href="/products/puma-antibody_nb500-261">PUMA</a></td>
+			<td>Cytoplasm; translocates to mitochondrial outer membrane</td>
+			<td>PUMA (p53 upregulated modulator of apoptosis) interacts with Bcl-2 family members after activation, promoting mitochondrial apoptosis and release of cytochrome c.</td>
+		</tr>
+		<tr style="border-bottom-style: solid; border-color:#005f9e; border-width: 1px;">
+			<td><a href="/products/smac-diablo-antibody-78-1-118_nb500-213">SMAC/Diablo</a></td>
+			<td>Intermembrane space</td>
+			<td>Released from mitochondria into the cytoplasm during apoptosis where it binds Inhibitor of apoptosis proteins (IAPs) and neutralizes their inhibitory action.</td>
+		</tr>
+	</tbody>
+</table>
+<p>&nbsp;</p>
+
+<table align="center" cellpadding="5" cellspacing="5" style="width:600px">
+	<tbody>
+		<tr>
+			<td><img alt="Immunohistochemical staining of perfusion, fixed frozen rat medulla tissue sections with rabbit monoclonal anti-HT-6 antibody, stained with anti-rabbit secondary antibody in red, and counterstained with DAPI in blue." src="https://images.novusbio.com/design/Western-blots-apoptosis-regulatory-proteins_600x220.jpg" title="HT-6 staining in rat brain, IHC." /></td>
+		</tr>
+		<tr>
+			<td><em>Western blots of apoptosis regulatory proteins, highlighting <a href="/products/cytochrome-c-antibody-7h82c12_nb100-56503">cytochrome c antibody (NB100-56503)</a> (cytosolic and mitochondrial fractions). COX IV and β-actin were used as a loading control. HCT 116 cells were treated with 10 μM and 20 μM of curcumin (C) and curcumin-PLGA (CP) conjugate for 6 h, 12 h and 24 h. Similarly, 0.8 μl DMSO was used as a vehicle control. Image collected and cropped from CiteAb from the following publication: (http://europepmc.org/backend/ptpmcrender.fcgi?accid=PMC4334672&amp;blobtype=pdf) licensed under a CC-BY license.</em></td>
+		</tr>
+	</tbody>
+</table>
+
+<p><br />
+<a name="Oxidative Phosphorylation"></a></p>
+
+<p>&nbsp;</p>
+
+<h3>Oxidative Phosphorylation</h3>
+
+<p><span style="font-family:arial,helvetica,sans-serif">The most well-known function of mitochondria is energy production in the form of ATP. In the mitochondria, the citric acid cycle produces ATP and the reduction of coenzymes NAD+ and FAD+. During oxidation, the transfer of electrons from these reduced coenzymes involves a series of four respiratory chain (also known as the electron transport chain, ETC) protein complexes (<a href="/search?keywords=NADH%20dehydrogenase">Complex I</a>, <a href="/search?keywords=succinate+dehydrogenase+complex">II</a>, <a href="/search?keywords=Ubiquinol-cytochrome%20c%20reductase">III</a>, and <a href="/search?keywords=cytochrome%20c%20oxidase%204">IV</a>), which creates a proton gradient across the inner mitochondrial membrane. These four complexes and the <a href="/search?keywords=ATP+Synthase">ATP synthase</a> of the OXPHOS system are comprised of multiple subunits with over 90+ structural proteins and 30+ assembly factors. </span></p>
+
+<table cellpadding="6" cellspacing="6" style="width:100%">
+	<tbody>
+		<tr bgcolor="#005F9E">
+			<td><span style="color: #FFFFFF; font-weight: bold;">Antibody Name</span></td>
+			<td><span style="color: #FFFFFF; font-weight: bold;">Location</span></td>
+			<td><span style="color: #FFFFFF; font-weight: bold;">Function</span></td>
+		</tr>
+		<tr style="border-bottom-style: solid; border-color:#005f9e; border-width: 1px;">
+			<td><a href="/common-name/atp5a">ATP5A</a></td>
+			<td>Inner membrane</td>
+			<td>Mitochondrial ATP synthase subunit that contributes to the ATP synthesis coupled proton transport.</td>
+		</tr>
+		<tr style="border-bottom-style: solid; border-color:#005f9e; border-width: 1px;">
+			<td><a href="/common-name/atp5f1">ATP5F1</a></td>
+			<td>Inner membrane</td>
+			<td>Mitochondrial ATP synthase subunit that catalyzes ATP from ADP by utilizing a proton gradient generated by the ETC.</td>
+		</tr>
+		<tr style="border-bottom-style: solid; border-color:#005f9e; border-width: 1px;">
+			<td><a href="/common-name/bcs1l">BCS1L</a></td>
+			<td>Matrix</td>
+			<td>Chaperone protein involved in the assembly of Complex III of the ETC.</td>
+		</tr>
+		<tr style="border-bottom-style: solid; border-color:#005f9e; border-width: 1px;">
+			<td><a href="/products/cox4-antibody_nb110-39115">COX4 (Cytochrome c Oxidase Subunit IV isoform 1)</a></td>
+			<td>Inner membrane</td>
+			<td>Part of Complex IV in the ETC that transfers protons across the membrane and converts oxygen to water molecules.</td>
+		</tr>
+		<tr style="border-bottom-style: solid; border-color:#005f9e; border-width: 1px;">
+			<td><a href="/common-name/cox5b">COX5b</a></td>
+			<td>Matrix</td>
+			<td>Subunit of Cytochrome c oxidase complex that transfers electrons from cytochrome c to oxygen and helps generate the proton gradient across the inner membrane.</td>
+		</tr>
+		<tr style="border-bottom-style: solid; border-color:#005f9e; border-width: 1px;">
+			<td><a href="/common-name/glutamate-dehydrogenase">Glutamate Dehydrogenase</a></td>
+			<td>Matrix</td>
+			<td>Enzyme that catalyzes the reversible reaction between glutamate and alpha-ketoglutarate using NAD+ and NADP+.</td>
+		</tr>
+		<tr style="border-bottom-style: solid; border-color:#005f9e; border-width: 1px;">
+			<td><a href="/common-name/ndufc2">NDUFC2</a></td>
+			<td>Matrix</td>
+			<td>Subunit of NADH dehydrogenase (Complex I) which transfers electrons from NADH to the respiratory chain.</td>
+		</tr>
+		<tr style="border-bottom-style: solid; border-color:#005f9e; border-width: 1px;">
+			<td><a href="/products/pdk4-antibody_nbp1-07047">PDK4</a></td>
+			<td>Matrix</td>
+			<td>Pyruvate dehydrogenase kinase isoform 4 (PDK4) inhibits the pyruvate dehydrogenase complex via phosphorylation, helping to regulate glucose metabolism.</td>
+		</tr>
+		<tr style="border-bottom-style: solid; border-color:#005f9e; border-width: 1px;">
+			<td><a href="/products/pyruvate-dehydrogenase-e1-alpha-subunit-antibody_nb110-93479">Pyruvate Dehydrogenase</a></td>
+			<td>Matrix</td>
+			<td>Nuclear-encoded mitochondrial matrix multienzyme complex responsible for converting pyruvate to acetyl-CoA.</td>
+		</tr>
+		<tr>
+			<td><a href="/common-name/uqcrc1">UQCRC1</a></td>
+			<td>Matrix</td>
+			<td>Subunit of Complex III in the mitochondrial respiratory chain that catalyzes electron transfer from ubiquinol to cytochrome c.</td>
+		</tr>
+	</tbody>
+</table>
+
+<p><em>*Note: This table is not an inclusive list of all mitochondrial proteins involved in oxidative phosphorylation.</em></p>
+
+<p>&nbsp;</p>
+<table align="center" cellpadding="5" cellspacing="5" style="width:600px">
+	<tbody>
+		<tr>
+			<td><img alt="Western blot of lysates from mouse monocyte/macrophage cell line both untreated and treated with LPS, probed with goat polyclonal anti-IL-6 antibody, followed by anti-goat HRP-conjugated secondary antibody showing band in treated lane." src="https://images.novusbio.com/design/Western-blot-mitochondria_220x220.jpg" style="width:210px" title="Mouse monocyte/macrophage cell line lysates untreated and treated with LPS and probed with goat polyclonal anti-IL-6 antibody, WB." /></td>
+			<td><em>Mitochondria were sub fractionated into outer membrane (OM), inter membrane space (IMS), inner membrane (IM) and mitochondrial matrix (MM). The purity of the fractions was analyzed with marker proteins including TOM20 for OM, AIF for IMS, <a href="/products/cox4-antibody_nb110-39115">COX4 (NB110-39115)</a> for IM, and PDK4 for MM specificity. Image collected and cropped by CiteAb from the following publication:(//www.oncotarget.com/article/10474/text/) licensed under a CC-BY license.</em></td>
+		</tr>
+  </tbody>
+</table>
+
+<p>&nbsp;</p>
+
+<p align="center"><a href="#top">back to the top</a></p>
+
+<p><br />
+<a name="Mitochondrial Dynamics"></a></p>
+
+<h3>Mitochondrial Dynamics</h3>
+
+<p><span style="font-family:arial,helvetica,sans-serif">Mitochondrial dynamics refers to the ability of mitochondria to change shape, alter the inner and outer membrane structure, and exchange organelle components. The process of mitochondrial dynamics involves a coordination between fission and fusion events. Key components of the mitochondrial fission and fusion machinery include conserved GTPases in the dynamin family. Mitochondrial fission (mitochondrial fragmentation) is the process of generating multiple heterogeneous mitochondria from one mitochondrion. Conversely, mitochondrial fusion is the merging of two or more mitochondria to create a network.<br />
+<br />
+Defective mitochondrial dynamics are a hallmark of many diseases, in particular for neurodegenerative disorders. A study by <a href="https://link.springer.com/article/10.1007%2Fs12035-014-8675-z" target="_blank">Wu et al</a>. examined mitochondrial dysfunction in the context of <a href="/research-areas/neuroscience/neurodegeneration#alzheimers">Alzheimer’s Disease</a> (AD), finding altered mitochondrial morphology and significantly increased expression of key fusion proteins, including <a href="/products/mitofusin-1-antibody-11e9-1h12_nbp1-71775">Mitofusin-1 (Mfn-1) (NBP1-71775)</a> and <a href="/primary-antibodies/mitofusin-2">Mitofusin-2 (Mfn-2)</a>. Wu et al. suggested excessive amyloid-beta (Aβ) accumulation leads to abnormal mitofusin expression and triggers mitochondrial dysfunction observed during AD pathogenesis. </span></p>
+
+<p>&nbsp;</p>
+
+<table cellpadding="6" cellspacing="6" style="width:100%">
+	<tbody>
+	  <tr bgcolor="#005F9E">
+			<td><span style="color: #FFFFFF; font-weight: bold;">Antibody Name</span></td>
+			<td><span style="color: #FFFFFF; font-weight: bold;">Fission or Fusion</span></td>
+			<td><span style="color: #FFFFFF; font-weight: bold;">Location</span></td>
+			<td><span style="color: #FFFFFF; font-weight: bold;">Function</span></td>
+		</tr>
+	  <tr style="border-bottom-style: solid; border-color:#005f9e; border-width: 1px;">
+			<td><a href="/products/drp1-antibody-4e11b11_nbp2-23489">DRP1 (Dynamin-related protein 1)</a></td>
+			<td>Fission</td>
+			<td>Outer membrane</td>
+			<td>Functions in mitochondrial fission during apoptosis and required for proper cellular distribution of mitochondria.</td>
+		</tr>
+	  <tr style="border-bottom-style: solid; border-color:#005f9e; border-width: 1px;">
+			<td><a href="/products/ttc11-antibody_nb100-56646">FIS1/TCC11</a></td>
+			<td>Fission</td>
+			<td>Outer membrane</td>
+			<td>Binds to DRP1 to assist with mitochondrial fission, regulating the morphology of mitochondria.</td>
+		</tr>
+	  <tr style="border-bottom-style: solid; border-color:#005f9e; border-width: 1px;">
+			<td><a href="/products/mitofusin-1-antibody-11e9-1h12_nbp1-71775">Mitofusin 1</a></td>
+			<td>Fusion</td>
+			<td>Outer membrane</td>
+			<td>Role in mitochondrial clustering, outer membrane fusion, and morphology.</td>
+		</tr>
+	  <tr style="border-bottom-style: solid; border-color:#005f9e; border-width: 1px;">
+			<td><a href="/products/mitofusin-2-antibody_nbp2-66383">Mitofusin 2</a></td>
+			<td>Fusion</td>
+			<td>Outer membrane</td>
+			<td>Mitochondrial outer membrane fusion and a role in maintenance and operation of the mitochondrial network.</td>
+		</tr>
+	  <tr style="border-bottom-style: solid; border-color:#005f9e; border-width: 1px;">
+			<td><a href="/products/opa1-antibody-1284b_nbp2-59770">OPA1 (Optic Atrophy 1)</a></td>
+			<td>Fusion</td>
+			<td>Inner membrane</td>
+			<td>Similarity to dynamin-related GTPases with role in mitochondrial inner membrane fusion.</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>&nbsp;</p>
+
+<p align="center"><a href="#top">back to the top</a></p>
+
+<p>&nbsp;</p>
+
+<p align="center"><a class="link_button" href="https://www.tocris.com/product-type/mitochondria-dyes-and-probes" target="_blank">View Mitochondrial Dyes and Probes</a></p>
+
+<p><br />
+<a name="Additional Mitochondrial Markers"></a></p>
+
+<p>&nbsp;</p>
+
+<h3>Additional Mitochondrial Markers</h3>
+
+<p><span style="font-family:arial,helvetica,sans-serif">Mitochondria have additional functions ranging from protein translation, preprotein and protein import and export, protein folding and assembly, and regulation of cell cycle and growth. <a href="/common-name/hsp60">HSP60</a>, a well-known mitochondrial chaperonin, is responsible for regulating proper protein folding and assembly of imported proteins. <a href="/primary-antibodies/prohibitin">Prohibitin</a>, a ubiquitously expressed, pleiotropic protein, is involved in mitochondrial biogenesis, metabolism, and morphology, and, its dysregulation has been linked to aging, metabolic, proliferative, and neurodegenerative diseases. </span></p>
+
+<p>&nbsp;</p>
+
+<table cellpadding="6" cellspacing="6" style="width:100%">
+	<tbody>
+	  <tr bgcolor="#005F9E">
+			<td><span style="color: #FFFFFF; font-weight: bold;">Antibody Name</span></td>
+			<td><span style="color: #FFFFFF; font-weight: bold;">Location</span></td>
+			<td><span style="color: #FFFFFF; font-weight: bold;">Function</span></td>
+		</tr>
+	  <tr style="border-bottom-style: solid; border-color:#005f9e; border-width: 1px;">
+			<td><a href="/products/hexokinase-1-antibody_nbp1-85789">Hexokinase 1</a></td>
+			<td>Outer membrane</td>
+			<td>Phosphorylates glucose to produce glucose-6-phosphate and committing it to the glycolytic pathway.</td>
+		</tr>
+	  <tr style="border-bottom-style: solid; border-color:#005f9e; border-width: 1px;">
+			<td><a href="/products/hsp60-antibody_nbp1-77397">HSP60 (Heat Shock Protein 60kDa)</a></td>
+			<td>Matrix</td>
+			<td>Protein folding and assembly of imported polypeptide.</td>
+		</tr>
+	  <tr style="border-bottom-style: solid; border-color:#005f9e; border-width: 1px;">
+			<td><a href="/products/hsp70-hspa1a-antibody_nbp1-77455">HSP70 (Heat Shock Protein 70kDa)</a></td>
+			<td>Matrix</td>
+			<td>Role in protein folding, degradation, and association with presequence translocase-associated motor (PAM) to drive preprotein import.</td>
+		</tr>
+	  <tr style="border-bottom-style: solid; border-color:#005f9e; border-width: 1px;">
+			<td><a href="/products/mitofilin-antibody_nb100-1919">Mitofilin</a></td>
+			<td>Inner membrane / Cristae</td>
+			<td>One of most abundant mitochondrial proteins. Role in maintenance of cristae morphology.</td>
+		</tr>
+	  <tr style="border-bottom-style: solid; border-color:#005f9e; border-width: 1px;">
+			<td><a href="/products/prohibitin-antibody_af3470">Prohibitin</a></td>
+			<td>Inner membrane</td>
+			<td>Show antiproliferative activity and has been proposed to play a role in normal cell cycle regulation, replicative senescence, cellular immortalization, and tumor suppression.</td>
+		</tr>
+	  <tr style="border-bottom-style: solid; border-color:#005f9e; border-width: 1px;">
+			<td><a href="/common-name/timm23">TIMM23</a></td>
+			<td>Inner membrane</td>
+			<td>Subunit of the translocase of inner membrane 23 (TIM23) complex that functions to transport peptide-contain proteins across the inner membrane.</td>
+		</tr>
+	  <tr style="border-bottom-style: solid; border-color:#005f9e; border-width: 1px;">
+			<td><a href="/common-name/tomm20">TOMM20</a></td>
+			<td>Outer membrane</td>
+			<td>Together with TOM22 functions as the transit peptide receptor and facilitates the movement of preproteins into the TOM40 translocation pore.</td>
+		</tr>
+	  <tr style="border-bottom-style: solid; border-color:#005f9e; border-width: 1px;">
+			<td><a href="/primary-antibodies/vdac1">VDAC1</a></td>
+			<td>Outer membrane</td>
+			<td>Voltage dependent anion channel (VDAC) pore that allows entry and exit between the cytosol and mitochondria. Critical substrate for PINK/Parkin-mediated autophagy.</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>&nbsp;</p>
+
+<p><em>*Note: This table is not an inclusive list of all mitochondrial proteins involved in oxidative phosphorylation.</em></p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<table align="center" cellpadding="5" cellspacing="5" style="width:600px">
+	<tbody>
+		<tr>
+			<td><img alt="Western blot of lysates from mouse monocyte/macrophage cell line both untreated and treated with LPS, probed with goat polyclonal anti-IL-6 antibody, followed by anti-goat HRP-conjugated secondary antibody showing band in treated lane." src="https://images.novusbio.com/design/Immunofluorescent-image_220x220.jpg" style="width:210px" title="Mouse monocyte/macrophage cell line lysates untreated and treated with LPS and probed with goat polyclonal anti-IL-6 antibody, WB." /></td>
+			<td><em>Confocal immunofluorescent analysis of HeLa cells staining <a href="/products/hsp60-antibody_nbp1-77397">with Rabbit Anti-Hsp60 Polyclonal antibody (NBP1-77397)</a> at 1:100 followed by Alexa Fluor 488-conjugated Goat to rabbit IgG secondary antibody (green). Actin filaments were labeled with Alexa Fluor 568 phalloidin (red) and nuclei were stained with DAPI (blue).</em></td>
+		</tr>
+	</tbody>
+</table>
+
+<p>&nbsp;</p>
+
+<p align="center"><a href="#top">back to the top</a></p>
+
+<p>&nbsp;</p>
+
+<h3>Select References</h3>
+
+<p>Bano, D., &amp; Prehn, J. (2018). <a href="https://www.thelancet.com/journals/ebiom/article/PIIS2352-3964(18)30100-2/fulltext" target="_blank">Apoptosis-Inducing Factor (AIF) in Physiology and Disease: The Tale of a Repented Natural Born Killer</a>.&nbsp;<em>EBioMedicine</em>. https://doi.org/10.1016/j.ebiom.2018.03.016</p>
+
+<p><a href="https://www.nature.com/articles/s41556-018-0139-7" target="_blank">Focusing on mitochondrial form and function</a>. (2018).&nbsp;<em>Nature cell biology</em>. https://doi.org/10.1038/s41556-018-0139-7</p>
+
+<p>Javadov, S., Kozlov, A. V., &amp; Camara, A. (2020). <a href="https://www.mdpi.com/2073-4409/9/5/1177" target="_blank">Mitochondria in Health and Diseases</a>.&nbsp;<em>Cells</em>. https://doi.org/10.3390/cells9051177</p>
+
+<p>Jeong, S. Y., &amp; Seol, D. W. (2008). <a href="http://koreascience.or.kr/article/JAKO200810103488738.page" target="_blank">The role of mitochondria in apoptosis</a>.&nbsp;<em>BMB reports</em>. https://doi.org/10.5483/bmbrep.2008.41.1.011</p>
+
+<p>Koopman, W. J., Distelmaier, F., Smeitink, J. A., &amp; Willems, P. H. (2013). <a href="https://www.embopress.org/doi/full/10.1038/emboj.2012.300" target="_blank">OXPHOS mutations and neurodegeneration</a>.&nbsp;<em>The EMBO journal</em>. https://doi.org/10.1038/emboj.2012.300</p>
+
+<p>Lee, H., &amp; Yoon, Y. (2016). <a href="https://portlandpress.com/biochemsoctrans/article-abstract/44/6/1725/65630/Mitochondrial-fission-and-fusion?redirectedFrom=fulltext" target="_blank">Mitochondrial fission and fusion</a>.&nbsp;<em>Biochemical Society transactions</em>. https://doi.org/10.1042/BST20160129</p>
+
+<p>Neupert W. (1997). <a href="https://www.annualreviews.org/doi/10.1146/annurev.biochem.66.1.863" target="_blank">Protein import into mitochondria</a>.&nbsp;<em>Annual review of biochemistry</em>. https://doi.org/10.1146/annurev.biochem.66.1.863</p>
+
+<p>Nunnari, J., &amp; Suomalainen, A. (2012). <a href="https://www.cell.com/cell/fulltext/S0092-8674(12)00235-8?_returnURL=https%3A%2F%2Flinkinghub.elsevier.com%2Fretrieve%2Fpii%2FS0092867412002358%3Fshowall%3Dtrue" target="_blank">Mitochondria: in sickness and in health</a>.&nbsp;<em>Cell</em>. https://doi.org/10.1016/j.cell.2012.02.035</p>
+
+<p>Pfanner, N., Warscheid, B., &amp; Wiedemann, N. (2019). <a href="https://www.nature.com/articles/s41580-018-0092-0" target="_blank">Mitochondrial proteins: from biogenesis to functional networks</a>.&nbsp;<em>Nature reviews. Molecular cell biology</em>. https://doi.org/10.1038/s41580-018-0092-0</p>
+
+<p>Signorile, A., Sgaramella, G., Bellomo, F., &amp; De Rasmo, D. (2019). <a href="https://www.mdpi.com/2073-4409/8/1/71/htm" target="_blank">Prohibitins: A Critical Role in Mitochondrial Functions and Implication in Diseases</a>.&nbsp;<em>Cells</em>. https://doi.org/10.3390/cells8010071</p>
+
+<p>Tilokani, L., Nagashima, S., Paupe, V., &amp; Prudent, J. (2018). <a href="https://portlandpress.com/essaysbiochem/article/62/3/341/78600/Mitochondrial-dynamics-overview-of-molecular" target="_blank">Mitochondrial dynamics: overview of molecular mechanisms</a>.&nbsp;<em>Essays in biochemistry</em>. https://doi.org/10.1042/EBC20170104</p>
+
+<p>Wang, C., &amp; Youle, R. J. (2009). <a href="https://www.annualreviews.org/doi/10.1146/annurev-genet-102108-134850" target="_blank">The role of mitochondria in apoptosis*</a>.&nbsp;<em>Annual review of genetics</em>. https://doi.org/10.1146/annurev-genet-102108-134850</p>
+
+<p>Westermann B. (2010). <a href="https://www.nature.com/articles/nrm3013" target="_blank">Mitochondrial fusion and fission in cell life and death</a>.&nbsp;<em>Nature reviews. Molecular cell biology</em>. https://doi.org/10.1038/nrm3013</p>
+
+<p>Wiedemann, N., &amp; Pfanner, N. (2017<a href="https://www.annualreviews.org/doi/10.1146/annurev-biochem-060815-014352" target="_blank">). Mitochondrial Machineries for Protein Import and Assembly</a>.&nbsp;<em>Annual review of biochemistry</em>,&nbsp;<em>86</em>, 685–714. https://doi.org/10.1146/annurev-biochem-060815-014352</p>
+
+<p>Wu, Z., Zhu, Y., Cao, X., Sun, S., &amp; Zhao, B. (2014). <a href="https://link.springer.com/article/10.1007%2Fs12035-014-8675-z" target="_blank">Mitochondrial toxic effects of Aβ through mitofusins in the early pathogenesis of Alzheimer's disease</a>.&nbsp;<em>Molecular neurobiology</em>. https://doi.org/10.1007/s12035-014-8675-z</p>
+
+<p>Yadav, K., Yadav, A., Vashistha, P., Pandey, V. P., &amp; Dwivedi, U. N. (2019). <a href="https://www.eurekaselect.com/172431/article" target="_blank">Protein Misfolding Diseases and Therapeutic Approaches</a>.&nbsp;<em>Current protein &amp; peptide science</em>. https://doi.org/10.2174/1389203720666190610092840<strong> </strong></p>
+
+<p>&nbsp;</p>
+<div class="ra-product-block"></div>                    </div>
+    </div>
+    <div id="novus_footer_line"></div>
+
+<!--    </div>
+    <div class="container_16" id="novus_footer">        
+        <div id="novus_footer_social" class="grid_16 text_center">
+            <a href="//www.facebook.com/NovusBiologicals" target="_blank"><span class="sprite_facebook"></span></a>
+            <a href="//twitter.com/novusbio" target="_blank"><span class="sprite_twitter"></span></a>
+            <a href="//plus.google.com/b/114457663504514235763/114457663504514235763/posts" target="_blank"><span class="sprite_gplus"></span></a>
+            <a href="//www.youtube.com/user/NovusBiologicals" target="_blank"><span class="sprite_youtube"></span></a>
+            <a href="//www.linkedin.com/company/novus-biologicals-llc" target="_blank"><span class="sprite_linkedin"></span></a>
+            <a href="//pinterest.com/novusbio/" target="_blank"><span class="sprite_pinterest"></span></a>
+        </div>
+                <div class="grid_16 text_center tableBlue_bar" id="novus_footer_register">
+            <span>Register with us - submit reviews and earn reward points for product discounts</span>
+                <form action="/user/register" method="POST">
+                        <input type="text" id="novus_footer_register_input" name="novus_footer_register_input">
+                        <button id="novus_footer_register_submit">Submit</button>
+                </form>
+        </div>
+        <div class="grid_11"><a href="/support/customer-service/terms.html">Terms &amp; Conditions</a> &nbsp; | &nbsp;<a href="/support/customer-service/privacy-policy.html">Privacy Policy</a> &nbsp; | &nbsp; <a href="/about/contact-us.html">Contact Us</a> &nbsp; | &nbsp; <a href="/novus-bio-sitemap.html">Sitemap</a></div>
+        <div class="grid_5 text_right" id="novus_footer_end">&copy;  Novus Biologicals, All Rights Reserved.</div>
+    </div>-->
+</div>
+
+<div class="container_16">
+  <div id="footer">
+    <div class="grid_16 text_center">
+      <div class="fp_horzline"></div>
+    </div>
+    <div class="clear"></div>
+    <div class="grid_16">
+      <table class="footer_boxes">
+        <tr>
+          <th>Popular Products</th>
+          <th>Company Information</th>
+          <th>Support</th>
+          <th>Stay Connected</th>
+        </tr>
+        <tr>
+          <td>
+             <ul class='links'><li><a href="/productsearch/novus">Antibodies</a></li><li><a href="/product-type/secondary-antibodies">Secondary Antibodies</a></li><li><a href="/product-type/isotype-controls">Isotype Controls</a></li><li><a href="/product-type/peptides-and-proteins">Proteins and Peptides</a></li><li><a href="/product-type/elisa-kits">ELISA Kits</a></li><li><a href="/samplesize">Sample Size</a></li><li><a href="https://www.novusbio.com/new-product-information-page.html">New Products</a></li> </ul>          </td>
+          <td>
+             <ul class='links'><li><a href="/about.html">About Us</a></li><li><a href="https://www.bio-techne.com/about/careers">Careers</a></li><li><a href="/support/quality-assurance.html">Novus Guarantee</a></li><li><a href="/about/contact-us.html">Contact Us</a></li><li><a href="/about/novus-team.html">Our Team</a></li> </ul>          </td>
+          <td>
+             <ul class='links'><li><a href="/support/technical-support.html">Technical Support</a></li><li><a href="/support/faqs.html">FAQs</a></li><li><a href="/explorer">BioInformatics</a></li><li><a href="/webform/help-finding-antibodies">Help Finding Antibodies</a></li><li><a href="/support/support-by-application.html">Protocols</a></li> </ul>          </td>
+          <td id="footer_social_links">
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="clear"></div>
+      <div class="grid_16">
+        <div id="GTS_CONTAINER" style="float: right;margin-top: 10px;"></div>
+        <div id="footer_officeinfo">
+        </div>
+        <div class="fp_horzline"></div>
+        <div class="footer_othersites">
+          <p>Visit our other sites</p>
+          <a href="https://www.bio-techne.com/" target="_blank"><div class="fp_biotechne"></div></a>
+          <a href="https://www.rndsystems.com/"><div class="fp_rnd"></div></a>
+          <a href="https://www.novusbio.com/" target="_blank"><div class="fp_novus"></div></a>
+          <a href="https://www.tocris.com/" target="_blank"><div class="fp_tocris"></div></a> 
+          <a href="http://www.proteinsimple.com/" target="_blank"><div class="fp_proteinSimple"></div></a>
+          <a href="http://www.biospacific.com/" target="_blank"><div class="fp_biospacific"></div></a>
+          <!--<a href="http://www.rnamedical.com/" target="_blank"><div class="fp_rna"></div></a>-->
+          <a href="http://www.acdbio.com/" target="_blank"><div class="fp_acd"></div></a>
+          <a href="http://www.rndheme.com/" target="_blank"><div class="fp_rndcc"></div></a>       
+        </div>
+        <div class="text_center">
+          <div class="fp_horzline"></div>
+        </div>
+        <div class="copyright">&copy;2021 Novus Biologicals, All Rights Reserved.</div>
+        <div class="footer_legal">
+          <ul class="links"><li class="menu-47946 first"><a href="/support/customer-service/privacy-policy.html" title="">Privacy Policy</a></li>
+<li class="menu-47956"><a href="/novus-bio-sitemap.html" title="">Sitemap</a></li>
+<li class="menu-47951"><a href="/about/contact-us.html" title="">Contact Us</a></li>
+<li class="menu-47941 last"><a href="/support/customer-service/terms.html" title="">Terms &amp; Conditions</a></li>
+</ul>        </div>
+        <div class="clear"></div>
+      </div>
+  </div>
+</div><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam-cell.nr-data.net","licenseKey":"76fb58fb05","applicationID":"788348554,30870807","transactionName":"YFdbZBFZXxdWAhAMVlkdeFMXUV4KGA8LAVxoQlhXBmdHDVIW","queueTime":0,"applicationTime":135,"atts":"TBBYEllDTBk=","errorBeacon":"bam-cell.nr-data.net","agent":""}</script><noscript><img src="https://www.novusbio.com/akam/11/pixel_7aa899b1?a=dD1kODlkMTg2NzAwZjVkNDBiMWUyNDZlNThjOGIwMDI0MGFmMmJkYjJjJmpzPW9mZg==" style="visibility: hidden; position: absolute; left: -999px; top: -999px;" /></noscript></body>
+</html>
+
