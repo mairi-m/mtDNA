@@ -4,7 +4,7 @@ Modeling mtDNA habits
 ## Mitochondria
 [Mitochondria](https://www.genome.gov/genetics-glossary/Mitochondria) are often referred to as 'The powerhouse of the cell'. Mitochondria are a type of sub-unit in a cell which create energy for a cell using oxygen, fats, sugars and proteins. Mitochondria are also involved in cell death ([aptosis](https://en.wikipedia.org/wiki/Apoptosis)) which is important because cells which grow too large can cause tumors.
 
-![Animal cell](Animal_cell_structure_en.svg)
+![Animal cell](https://upload.wikimedia.org/wikipedia/commons/4/48/Animal_cell_structure_en.svg)
 
 > Cells have different sub-groups, mitochondria are one of them.
 
