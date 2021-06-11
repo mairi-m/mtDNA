@@ -30,7 +30,7 @@ Mutated mtDNA can cause disease if they cannot carry out their function properly
 Mutated mtDNA molecules can cause disease because they code for many mitochondrial proteins.  If mutant mtDNA species reaches sufficiently high levels in the cell then these proteins will not be produced in sufficient quantities to support cell function. The result is mitochondrial dysfunction. This has been connected to illness such as alzheimers, cancer and muscular dystrophy.
 
 ## Modelling mtDNA
-It is important to model mtDNA to gain a better understanding of it so treatment for many different mitochondrial diseases can be developed.
+It is important to model mtDNA to gain a better understanding of it so treatment for many different mitochondrial diseases can be developed. In this project we will create a model of skeletal muscle fiber with wild type and mutant mtDNA diffusing randomly. The model will show mtDNA replicating and dying. It will also show perinucleus. We will use python and the mesa library to create this model. 
 
 ## References
 http://mito.ncl.ac.uk/clonexp/clonal_expansion/
