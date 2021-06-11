@@ -27,16 +27,15 @@ Mutated mtDNA can cause disease if they cannot carry out their function properly
 [Clonal expansion](https://royalsocietypublishing.org/doi/10.1098/rsob.200061) is when mtDNA mutations increase. It can happen as humans age or because of mitochondrial disease. Larger amounts of mutated mtDNA can also cause mitochondrial diseases.
 
 ## Mitochondrial Disease
-Mutated mtDNA molecules can cause disease because they code for many mitochondrial proteins.  If mutant mtDNA species reaches sufficiently high levels in the cell then these proteins will not be produced in sufficient quantities to support cell function. The result is mitochondrial dysfunction. 
+Mutated mtDNA molecules can cause disease because they code for many mitochondrial proteins.  If mutant mtDNA species reaches sufficiently high levels in the cell then these proteins will not be produced in sufficient quantities to support cell function. The result is mitochondrial dysfunction. This has been connected to illness such as alzheimers, cancer and muscular dystrophy.
 
 ## Modelling mtDNA
 It is important to model mtDNA to gain a better understanding of it so treatment for many different mitochondrial diseases can be developed.
 
+# References
+http://mito.ncl.ac.uk/clonexp/clonal_expansion/
 
-General comments:
 
-It would be good to have a separate section about mito disease.
-It would be good to include more references, e.g. to the blog post and review articles I sent to you.
 Could you add a section about the technological tools you will use: Python, MESA?
 
 
