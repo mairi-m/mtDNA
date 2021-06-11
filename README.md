@@ -32,11 +32,9 @@ Mutated mtDNA molecules can cause disease because they code for many mitochondri
 ## Modelling mtDNA
 It is important to model mtDNA to gain a better understanding of it so treatment for many different mitochondrial diseases can be developed.
 
-# References
+## References
 http://mito.ncl.ac.uk/clonexp/clonal_expansion/
 
-
-Could you add a section about the technological tools you will use: Python, MESA?
 
 
 
