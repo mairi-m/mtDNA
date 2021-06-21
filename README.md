@@ -32,7 +32,9 @@ Mutated mtDNA molecules can cause disease because they code for many mitochondri
 ## Modelling mtDNA
 It is important to model mtDNA to gain a better understanding of it so treatment for many different mitochondrial diseases can be developed. In this project we will create a model of skeletal muscle fiber with wild type and mutant mtDNA diffusing randomly. The model will show mtDNA being synthesised and degraded. It will also show perinucleus and how the mtDNA interacts with them.
 
-## Toola
+![skeletal muscle fiber](images/skeletal_muscle_fiber_d.jpg)
+
+## Tools
 We will create [an agent based model](https://en.wikipedia.org/wiki/Agent-based_model) using [python](https://en.wikipedia.org/wiki/Python_(programming_language)) and the [MESA library](https://mesa.readthedocs.io/en/stable/).
 
 ## References
