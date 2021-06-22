@@ -1,5 +1,5 @@
 # Agent-based models of mtDNA population dynamics
-This project is about modelling clonal expansion. It is for the gold CREST award with [Conor Lawless](https://www.ncl.ac.uk/medical-sciences/people/profile/conorlawless.html) as a mentor.
+This project is about modelling clonal expansion. It is for the [gold CREST award](https://www.crestawards.org/crest-gold) with [Conor Lawless](https://www.ncl.ac.uk/medical-sciences/people/profile/conorlawless.html) as a mentor.
 
 ## Mitochondria
 [Mitochondria](https://en.wikipedia.org/wiki/Mitochondrion) are often referred to as 'the powerhouse of the cell'. Mitochondria are a type of sub-unit ([organelle](https://en.wikipedia.org/wiki/Organelle)) within a [cell](https://en.wikipedia.org/wiki/Cell_(biology)) which create energy for a cell using oxygen, fats, sugars and proteins. Mitochondria are also involved in cell death ([apoptosis](https://en.wikipedia.org/wiki/Apoptosis)) which is important because cells which divide too many times result in exessive numbers of cells, causing tumors.
