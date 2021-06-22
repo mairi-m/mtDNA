@@ -30,12 +30,13 @@ Mutated mtDNA can cause disease if they cannot carry out their function properly
 Mutated mtDNA molecules can cause disease because they code for many mitochondrial proteins.  If mutant mtDNA species reaches sufficiently high levels in the cell then these proteins will not be produced in sufficient quantities to support cell function. The result is mitochondrial dysfunction. Some primary mitochondrial diseases are [leigh syndrome](https://en.wikipedia.org/wiki/Leigh_syndrome), [mitochondrial myopathy](https://en.wikipedia.org/wiki/Mitochondrial_myopathy) and [Leber's hereditary optic neuropathy](https://en.wikipedia.org/wiki/Leber%27s_hereditary_optic_neuropathy). Mitochondrial dysfunction has also been connected to illness such as alzheimers, cancer and muscular dystrophy. Mitochondrial disease can have severe and untreatable consequences such as vision and hearing loss, difficulty walking and breathing, epilepsy, neurodegeneration and developmental defects.
 
 ## Modelling mtDNA
-It is important to model mtDNA to gain a better understanding of it so treatment for many different mitochondrial diseases can be developed. In this project we will create a model of skeletal muscle fiber with wild type and mutant mtDNA diffusing randomly. The model will show mtDNA being synthesised and degraded. It will also show perinuclei and how the mtDNA interacts with them.
+It is important to model mtDNA to gain a better understanding of it so treatment for many different mitochondrial diseases can be developed. In this project we will create a model of skeletal muscle fiber with wild type and mutant mtDNA diffusing randomly. The model will show mtDNA being synthesised and degraded. It will also show perinuclei which are fixed in space and how the mtDNA interacts with them.
 
 ![skeletal muscle fiber](images/skeletal_muscle_fiber_d.jpg)
+> mtDNA travels slowly longitudinally and quickly radially.
 
 ## Tools
-We will create [an agent based model](https://en.wikipedia.org/wiki/Agent-based_model) using [python](https://en.wikipedia.org/wiki/Python_(programming_language)) and the [MESA library](https://mesa.readthedocs.io/en/stable/).
+We will create [an agent based model](https://en.wikipedia.org/wiki/Agent-based_model) using [python](https://www.python.org/) and the [MESA library](https://mesa.readthedocs.io/en/stable/).
 
 ## References
 http://mito.ncl.ac.uk/clonexp/clonal_expansion/
