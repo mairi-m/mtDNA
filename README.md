@@ -36,7 +36,7 @@ It is important to model mtDNA to gain a better understanding of it so treatment
 > mtDNA travels slowly longitudinally and quickly radially.
 
 ## Tools
-We will create [an agent based model](https://en.wikipedia.org/wiki/Agent-based_model) using [python](https://www.python.org/) and the [MESA library](https://mesa.readthedocs.io/en/stable/).
+We will create [an agent based model](https://en.wikipedia.org/wiki/Agent-based_model) using [python](https://www.python.org/) and the [MESA library](https://mesa.readthedocs.io/en/stable/). Python is a popular easy to read programming language which I already have experiance in. It can also be used with the MESA library for agent based modelling which is why we are using it.
 
 ## References
 http://mito.ncl.ac.uk/clonexp/clonal_expansion/
