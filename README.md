@@ -49,7 +49,9 @@ In the beginning I split the project into 5 sections:
 
 I researched the biology first to gain a better understanding of the project and then documented what I learned in github. I then began learning how to use the mesa library. I had meetings with Conor and added to the documentation throughout the project. 
 
-I used google sheets ([sheet linked here](https://docs.google.com/spreadsheets/d/1H-vyV8cI5vYHMRJBZxGlX5kHtQQPEzIrgFyDWQjZb1U/edit?usp=sharing)) to organise my time and ensure I spent long enough on the project.
+I used google sheets ([sheet linked here](https://docs.google.com/spreadsheets/d/1H-vyV8cI5vYHMRJBZxGlX5kHtQQPEzIrgFyDWQjZb1U/edit?usp=sharing)) to organise my time and ensure I spent long enough on the project. I colour coordinated target dates and hours spent on each section. The sheet also automatically keeps a running total of how many hours I have spent in total on the project.
+
+I considered using a gannt chart but each section apart from meetings and documentation happened seperately to reduce confusion so there would be no point as there is no overlap between sections.
 
 
 
