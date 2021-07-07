@@ -38,6 +38,21 @@ It is important to model mtDNA to gain a better understanding of it so treatment
 ## Tools
 We will create [an agent based model](https://en.wikipedia.org/wiki/Agent-based_model) using [python](https://www.python.org/) and the [MESA library](https://mesa.readthedocs.io/en/stable/). Python is a popular easy to read programming language which I already have experiance in. It can also be used with the MESA library for agent based modelling which is why we are using it.
 
+## Timescale
+
+In the beginning I split the project into 5 sections:
+- Meetings with Conor Lawless
+- Researching the biology behind the project
+- Learning how to use the mesa library
+- Creating the model
+- Documentation
+
+I researched the biology first to gain a better understanding of the project and then documented what I learned in github. I then began learning how to use the mesa library. I had meetings with Conor and added to the documentation throughout the project. 
+
+I used google sheets ((sheet linked here)[https://docs.google.com/spreadsheets/d/1H-vyV8cI5vYHMRJBZxGlX5kHtQQPEzIrgFyDWQjZb1U/edit?usp=sharing]) to organise my time and ensure I spent long enough on the project.
+
+
+
 ## References
 http://mito.ncl.ac.uk/clonexp/clonal_expansion/
 
