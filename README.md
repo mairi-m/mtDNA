@@ -54,7 +54,9 @@ I used google sheets ([sheet linked here](https://docs.google.com/spreadsheets/d
 I considered using a [gannt chart](https://en.wikipedia.org/wiki/Gantt_chart) but each section apart from meetings and documentation happened seperately to reduce confusion so there would be no point as there is no overlap between sections.
 
 
+## Mesa tutorial
 
+I worked through the [mesa library tutorial](https://mesa.readthedocs.io/en/stable/tutorials/intro_tutorial.html), making sure to take time to understand what was going on and changing small bits of code to see what would happen. I saved each section of the tutorial in a different file so I could easily go back to look over them and have clear references if I needed one.
 
 ## References
 http://mito.ncl.ac.uk/clonexp/clonal_expansion/
