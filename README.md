@@ -58,6 +58,8 @@ I considered using a [gannt chart](https://en.wikipedia.org/wiki/Gantt_chart) bu
 
 I worked through the [mesa library tutorial](https://mesa.readthedocs.io/en/stable/tutorials/intro_tutorial.html), making sure to take time to understand what was going on and changing small bits of code to see what would happen. I saved each section of the tutorial in a different file so I could easily go back to look over them and have clear references if I needed one.
 
+Once I got to the advanced tutorial I had a better idea of how the project would work. I could see how the agents moving randomly around a grid could be modified to be agents moving randomly around a constant plane with borders.
+
 ## References
 http://mito.ncl.ac.uk/clonexp/clonal_expansion/
 
