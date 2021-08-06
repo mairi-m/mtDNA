@@ -60,6 +60,8 @@ I worked through the [mesa library tutorial](https://mesa.readthedocs.io/en/stab
 
 Once I got to the advanced tutorial I had a better idea of how the project would work. I could see how the agents moving randomly around a grid could be modified to be agents moving randomly around a constant plane with borders.
 
+I played around a bit more with mesa trying to create a working model which would randomly print out the agents unique id but it didn't work. I also looked on the internet for more tutorials but didn't find anything helpful.
+
 ## References
 http://mito.ncl.ac.uk/clonexp/clonal_expansion/
 
