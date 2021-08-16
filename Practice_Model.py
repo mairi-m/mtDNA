@@ -4,13 +4,13 @@
 from mesa import Agent, Model
 from mesa.time import RandomActivation
 import matplotlib.pyplot as plt
+import random
 
 # Create agent class
 class TheAgent(Agent):
     def __init__(self, unique_id, model):
-        self.unique_id = self.random.randint(1,100)
+        self.unique_id = random.randint(1,100)
         print(unique_id)
-
 
     def step(self):
         return
@@ -29,7 +29,7 @@ class TheModel(Model):
     def step(self):
         self.schedule.step()
 
-TheModel(5)
+model = TheModel(5)
 for index in range(5):
     model.step()
 
