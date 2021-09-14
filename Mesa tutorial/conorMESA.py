@@ -12,7 +12,7 @@ class mtDNA(Agent):
         roll = np.random.random()
         if 0.0 < roll and roll < self.d:
             self.model.remove_molecules.append(self)
-        elif self.r < roll and roll < self.r + self.d:
+        elif self.d < roll and roll < self.r + self.d:
             self.model.replicate_molecules.append(self)            
         
 
@@ -34,9 +34,9 @@ class cell(Model):
         for mol in self.replicate_molecules:
             print("Replicating "+str(mol.unique_id))
             for j in range(2):
-                molecule = mtDNA(self.current_id + 1, self, r=self.r, d=self.d, parent_id=mol.unique_id)
+                self.current_id += 1
+                molecule = mtDNA(self.current_id, self, r=self.r, d=self.d, parent_id=mol.unique_id)
                 self.schedule.add(molecule)
-                self.current_id += i
                 self.num_mols += 1
         
         for mol in self.remove_molecules + self.replicate_molecules:
