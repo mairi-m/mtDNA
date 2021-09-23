@@ -13,14 +13,17 @@ define the model with:
 
   
    ~ create agents
-      create 20 agents
+     
+     create 20 agents
       
       
    ~ create a data collector
-      agent_reporters = {"State": "state"}
+     
+     agent_reporters = {"State": "state"}
       
       
    ~ create a step function
+      
       datacollector
       model step
       
