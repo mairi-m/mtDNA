@@ -1,13 +1,13 @@
 # mtDNA pseudocode
 
 
-~ imports
+### imports
 
 
 
-~ Create model
-define the model with:
-  degridation rate
+### Create model
+define the model with:  
+  degridation rate - in future mutants have higher degridation rate (https://www.science.org/doi/10.1126/sciadv.abi8886)
   replication rate
 
   
@@ -23,8 +23,9 @@ define the model with:
       datacollector
       model step
       
+### Create agent      
    
-      
+      cell life span?
       
       
       
