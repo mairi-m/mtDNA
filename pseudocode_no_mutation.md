@@ -12,15 +12,15 @@ define the model with:
   replication rate
 
   
-      ## create agents
+   ## create agents
       create 20 agents
       
       
-      ##create a data collector
+   ## create a data collector
       agent_reporters = {"State": "state"}
       
       
-      ## create a step function
+   ## create a step function
       datacollector
       model step
       
