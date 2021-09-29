@@ -47,9 +47,9 @@ In the beginning I split the project into 5 sections:
 - Creating the model
 - Documentation
 
-I researched the biology first to gain a better understanding of the project and then documented what I learned in github. I then began learning how to use the mesa library. I had meetings with Conor and added to the documentation throughout the project. 
+First I researched the biology to gain a better understanding of the project and then documented what I learned in github. I then began learning how to use the mesa library . I had meetings with Conor and added to the documentation throughout the project. 
 
-I used google sheets ([sheet linked here](https://docs.google.com/spreadsheets/d/1H-vyV8cI5vYHMRJBZxGlX5kHtQQPEzIrgFyDWQjZb1U/edit?usp=sharing)) to organise my time and ensure I spent long enough on the project. I colour coordinated target dates and hours spent on each section. The sheet also automatically keeps a running total of how many hours I have spent in total on the project.
+I used google sheets ([sheet linked here](https://docs.google.com/spreadsheets/d/1H-vyV8cI5vYHMRJBZxGlX5kHtQQPEzIrgFyDWQjZb1U/edit?usp=sharing)) to organise my time and ensure I spent long enough each section of the project to ensure each section was done thouroughly and was not skipped past quickly. The sheet also automatically keeps a running total of how many hours I have spent on the project.
 
 I considered using a [gannt chart](https://en.wikipedia.org/wiki/Gantt_chart) but each section apart from meetings and documentation happened seperately to reduce confusion so there would be no point as there is no overlap between sections.
 
@@ -58,9 +58,19 @@ I considered using a [gannt chart](https://en.wikipedia.org/wiki/Gantt_chart) bu
 
 I worked through the [mesa library tutorial](https://mesa.readthedocs.io/en/stable/tutorials/intro_tutorial.html), making sure to take time to understand what was going on and changing small bits of code to see what would happen. I saved each section of the tutorial in a different file so I could easily go back to look over them and have clear references if I needed one.
 
-Once I got to the advanced tutorial I had a better idea of how the project would work. I could see how the agents moving randomly around a grid could be modified to be agents moving randomly around a constant plane with borders.
+The advanced tutorial was more focused on spacial modelling. The project will possibly not include any spacial modelling as it can be very complicated but it is something for future thought.
 
-I played around a bit more with mesa trying to create a working model which would randomly print out the agents unique id but it didn't work. I also looked on the internet for more tutorials but didn't find anything helpful.
+I continued to play around a bit more with mesa trying to create a working model which would randomly print out the agents unique id but it didn't work. So i looked online for more tutorials and found an [infection model tutorial](https://dmnfarrell.github.io/bioinformatics/abm-mesa-python) which was very useful and helped solidify my knowlege.
+
+
+## The project
+
+Conor and I met and discussed what we were aiming towards more clearly. We decided to initially ignore mutations and spacial modelling so we could have a simpler start which we can work off of. He put some rough code in github while I worked on my own rough example. I worked off of my mesa tutorial exapmles and the infection model example to get my first version. 
+
+This version used code from the infection model which did not allow degraded agents to be removed but it did easily allow agents to be identified as wild-type of mutant. Conor's code allowed agents to be removed. None of our code gave a visual way of seeing the data. Our code also meant that the initial agents were created 1 every step. So if we had 20 initial agents then the model would only have 20 after 20 steps. This was not how I wanted the cell to work. I wanted it to have all the initial agents in the first step.
+
+Conor then put another version of his code on github which did not use mesa just python. It was easier to remove the agents from the code and printed a statement for every time and agent degraded or replicated. I then tried to use a mesa datacollector with his code to make a graph of the mtDNA population. We knew from the printed statements that all the agents were removed before the model was finished. The data collector didnt work as mesa models and agents must be used with it. Therefore i modified Conors code to use agent and model classes with a datacollector which would return the number of mtDNA agents after every step. This way all the initial agents are created in the first step as well. :)
+
 
 ## References
 http://mito.ncl.ac.uk/clonexp/clonal_expansion/
