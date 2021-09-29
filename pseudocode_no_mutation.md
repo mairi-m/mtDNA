@@ -16,7 +16,8 @@ define the model with:
       
       
    ~ create a data collector  
-     agent_reporters = {"State": "state"}
+     agent_reporters = {"State": "state"} - USE ARRAYS INSTEAD 
+     OR TRY AND MAKE A HISTOGRAM WITHOUT DEAD AGENTS ONLY WILD AND MUTANTS
       
       
    ~ create a step function  
