@@ -17,7 +17,7 @@ system_state=[mtDNA(unique_id=x,parent_id=-1) for x in range(0,N0)]
 # Simulation
 current_id = N0 + 1
 # Assume time step = 1
-for i in range(0,10000):
+for i in range(0,100):
     molecules_to_remove = []
     new_molecules = []
     
@@ -44,3 +44,11 @@ for i in range(0,10000):
     system_state = [mol for i,mol in enumerate(system_state) if i not in molecules_to_remove]
     # Add in the newly formed daughter molecules
     system_state = system_state + new_molecules
+    
+    datacollector = DataCollector(
+        mtDNA_reporters = {"Number of Molecules": len(system_state)})
+    
+    no_wild_mol = datacollector.get_model_vars_dataframe()
+    
+    no_wild_mol.plot()
+    plt.show()
