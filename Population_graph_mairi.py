@@ -1,4 +1,6 @@
 import random
+from mesa.datacollection import DataCollector
+import matplotlib.pyplot as plt
 
 class mtDNA():
     def __init__(self,unique_id,parent_id,r=0.01,d=0.01,status="wild-type"):
@@ -19,15 +21,15 @@ for i in range(0,10000):
     molecules_to_remove = []
     new_molecules = []
     
-    for mol_ind in range(0,len(system_state)):
-        molecule = system_state[mol_ind]
+    for mol_index in range(0,len(system_state)):
+        molecule = system_state[mol_index]
         
         roll = random.random()
         if 0.0 < roll and roll < molecule.d:
             print("Degrading "+str(molecule.unique_id)+" at timepoint "+str(i)+"!")
             # Label molecule for removal
-
             molecules_to_remove.append(mol_ind)
+            
         elif molecule.d < roll and roll < molecule.r + molecule.d:
             print("Replicating "+str(molecule.unique_id)+" at timepoint "+str(i)+"!")
             # Label mother for removal
