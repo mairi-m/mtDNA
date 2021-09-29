@@ -18,15 +18,18 @@ current_id = N0 + 1
 for i in range(0,10000):
     molecules_to_remove = []
     new_molecules = []
-    for mol_ind, molecule in enumerate(system_state):
+    
+    for mol_ind in range(0,len(system_state)):
+        molecule = system_state[mol_ind]
+        
         roll = random.random()
         if 0.0 < roll and roll < molecule.d:
-            print("Degrading "+str(molecule.unique_id)+"at timepoint "+str(i)+"!")
+            print("Degrading "+str(molecule.unique_id)+" at timepoint "+str(i)+"!")
             # Label molecule for removal
 
             molecules_to_remove.append(mol_ind)
         elif molecule.d < roll and roll < molecule.r + molecule.d:
-            print("Replicating "+str(molecule.unique_id)+"at timepoint "+str(i)+"!")
+            print("Replicating "+str(molecule.unique_id)+" at timepoint "+str(i)+"!")
             # Label mother for removal
             molecules_to_remove.append(mol_ind)
             # Add two daughters
@@ -34,6 +37,7 @@ for i in range(0,10000):
                 current_id += 1
                 daughter = mtDNA(current_id, r=molecule.r, d=molecule.d, parent_id=molecule.unique_id)
                 new_molecules.append(daughter)
+                
     # Drop all molecules which have been labelled for removal
     system_state = [mol for i,mol in enumerate(system_state) if i not in molecules_to_remove]
     # Add in the newly formed daughter molecules
