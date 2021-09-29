@@ -15,10 +15,9 @@ from mesa.datacollection import DataCollector
 
 class Cell(Model):
 
-        def __init__(self, N = 30, width = 20, height = 20, probMutant = 0.01):
+        def __init__(self, N = 30, probMutant = 0.01):
 
                 self.num_agents = N
-                self.cellSize = MultiGrid(width, height, True)
                 self.probabilityMutant = probMutant
                 self.schedule = RandomActivation(self)
 
@@ -27,12 +26,6 @@ class Cell(Model):
                 for index in range(self.num_agents):
                         a = mtDNA(self, index)
                         self.schedule.add(a)
-
-                        # Add agent to a place in the grid (the cell)
-
-                        x = self.random.randrange(self.cellSize.width)
-                        y = self.random.randrange(self.cellSize.height)
-                        self.cellSize.place_agent(a, (x,y))
 
                         # Make some mutant
                         mutant = np.random.randrange(0, 1)
@@ -59,15 +52,6 @@ class mtDNA(Agent):
                 self.age = 0
                 self.status = Status.Wild
 
-        def move(self):
-                possible_steps = self.model.grid.get_neighborhood(
-                        self.pos,
-                        moore = True,
-                        include_center = True
-                )
-
-                new_position = self.random.choice(possible_steps)
-                self.model.grid.move_agent(self, new_position)
 
 
         # Check age and replicate / mutate / remove
@@ -99,11 +83,10 @@ class mtDNA(Agent):
 
         def step(self):
                 self.status()
-                self.move()
                 self.age_increase()
                 self.replicate()
 
-model = Cell(30, 20, 20 ,0.01)
+model = Cell(30,0.01)
 for index in range(20):
         model.step()
 agent_state = model.datacollector.get_agent_vars_dataframe()
