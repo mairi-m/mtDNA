@@ -1,5 +1,11 @@
-# Title: mtDNA v1
+''' 
+Did not work
+'''
 
+
+
+# Title: mtDNA v1
+# Author: Mairi MacIain
 
 
 # Imports
