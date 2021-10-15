@@ -1,3 +1,9 @@
+'''
+Did not work. Connot use data collector without mesa
+'''
+# Author: Mairi MacIain
+
+
 import random
 from mesa.datacollection import DataCollector
 import matplotlib.pyplot as plt
