@@ -20,35 +20,33 @@ change fonts
 import random
 import matplotlib.pyplot as plt
 
-
-
 # Simulation function
-def simulation(system_state, Nwt0, Nmut0, tmax = 5000):
+def simulation(system_state, tmax = 5000):
     
     # Declare local variables
     system_states = []
-    molecules_to_remove = []
-    new_molecules = []
+    Nwt0 = len([mol for mol in system_state if mol.status=="wild-type"])
+    Nmut0 = len([mol for mol in system_state if mol.status=="mutant"])
     current_id = Nwt0 + Nmut0
-    times_to_record = range(0,tmax,10)
+    times_to_record = list(range(0,tmax,10))
 
-    
     # Assume time step = 1
-    for t in range(0,tmax):
+    t = 0
+    while t<tmax and len(system_state)>0:
+        molecules_to_remove = [] # This line and the line below had been moved out of the for loop.  Need to re-initialise these at every time step.
+        new_molecules = []
         if t in times_to_record:
             system_states.append(system_state)
-        
-
-        
+            
         for mol_ind in range(0,len(system_state)):
             molecule = system_state[mol_ind]
             
             roll = random.random()
-            if 0.0 < roll and roll < molecule.d:
+            if roll <= molecule.d:
                 # Label molecule for removal
                 molecules_to_remove.append(mol_ind)
                 
-            elif molecule.d < roll and roll < molecule.r + molecule.d:
+            elif roll > molecule.d and roll <= (molecule.r + molecule.d):
                 # Label mother for removal
                 molecules_to_remove.append(mol_ind)
                 
@@ -63,22 +61,21 @@ def simulation(system_state, Nwt0, Nmut0, tmax = 5000):
         
         # Add in the newly formed daughter molecules
         system_state = system_state + new_molecules
+        t = t+1
         
                     
     copy_numbers = [len(ss) for ss in system_states]
     # Remove the 0's from copy number array
-    copy_numbers = [no for no in copy_numbers if no != 0]
+    #copy_numbers = [no for no in copy_numbers if no != 0]
 
     mutants = [sum(mol.status=="mutant" for mol in ss) for ss in system_states]
     mutation_loads = [float(mutant)/float(copy_number) for mutant,copy_number in zip(mutants,copy_numbers)]
 
-    
     sim_res = {"CN": copy_numbers, "ML": mutation_loads}
     return(sim_res)
 
-
 # Function to make graph
-def makePlot(copy_numbers, mutation_loads, tmax = 5000, filename = "mtDNA_pop.png"):
+def makePlot(copy_numbers, mutation_loads, tmax = 5000, filename = "mtDNA_pop.png", showplot=False):
 
     # Declare variables
     times_to_record_final = []
@@ -109,68 +106,45 @@ def makePlot(copy_numbers, mutation_loads, tmax = 5000, filename = "mtDNA_pop.pn
     ax1.plot(times_to_record,mutation_loads)
     ax1.set_xlabel("Age (steps)", fontsize = 15)
     ax1.set_ylabel("Mutation load", fontsize = 15)
-    ax1.set_xticks(list(range(0,5500,500)))
-    ax1.set_xlim([0,5500])
+    ax1.set_xticks(list(range(0,tmax,500)))
+    ax1.set_xlim([0,tmax])
 
     # Graph of copy number/steps
     ax2.plot(times_to_record,copy_numbers)
     ax2.set_xlabel("Age (steps)", fontsize = 15)
     ax2.set_ylabel("Total copy number", fontsize = 15)
-    ax2.set_xticks(list(range(0,5500,500)))
-    ax2.set_xlim([0,5500])
+    ax2.set_xticks(list(range(0,tmax,500)))
+    ax2.set_xlim([0,tmax])
 
+    if showplot:
+        plt.show()
+    else:
+        plt.savefig(filename, dpi = 300, orientation = "landscape")
 
-
-    plt.show()
-    #plt.savefig(filename, dpi = 300, orientation = "landscape")
-
-    
-
-
-
-'''
-MAIN CODE
-'''
-# Initialise cell
 class mtDNA():
     def __init__(self,unique_id,parent_id,r=0.01,d=0.01,status="wild-type"):
         self.r=r
         self.d=d
         self.unique_id=unique_id
         self.parent_id=parent_id
-        self.status=status
+        self.status=status 
 
+'''
+MAIN CODE
+'''
+# Initialise cell
 Nwt0 = 15
 Nmut0 = 5
 system_state = [mtDNA(unique_id=x,parent_id=-1,status="wild-type") for x in range(0,Nwt0)] + [mtDNA(unique_id=x,parent_id=-1,status="mutant") for x in range(0,Nmut0)]
     
-
-
 # Run simulation 
-
-sim_res = simulation(system_state, Nwt0, Nmut0)
+sim_res = simulation(system_state, tmax=5000)
 mutation_loads = sim_res["ML"]
 copy_numbers = sim_res["CN"]
 
-results = [simulation(system_state) for i in range(0, 3)]
+results = [simulation(system_state) for i in range(0, 20)]
 
 for i,sim_res in enumerate(results):
     mutation_loads = sim_res["ML"]
     copy_numbers = sim_res["CN"]
     makePlot(copy_numbers, mutation_loads, filename = "mtDNA_" + str(i) + ".png")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
