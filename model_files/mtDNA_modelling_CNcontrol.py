@@ -20,6 +20,8 @@ Record to file correlation with mutation loads and sim ending
 # Imports
 import random
 import matplotlib.pyplot as plt
+from pathlib import Path
+import os
 
 # Simulation function
 def simulation(system_state, tmax = 5000):
@@ -111,6 +113,7 @@ def makePlot(copy_numbers, mutation_loads, tmax = 5000, filename = "mtDNA_pop.pn
     ax1.set_ylabel("Mutation load", fontsize = 15)
     ax1.set_xticks(list(range(0,tmax,500)))
     ax1.set_xlim([0,tmax])
+    ax1.set_ylim([0.0,1.0])
 
     # Graph of copy number/steps
     ax2.plot((times_to_record),copy_numbers)
@@ -118,6 +121,7 @@ def makePlot(copy_numbers, mutation_loads, tmax = 5000, filename = "mtDNA_pop.pn
     ax2.set_ylabel("Total copy number", fontsize = 15)
     ax2.set_xticks(list(range(0,tmax,500)))
     ax2.set_xlim([0,tmax])
+    ax2.set_ylim([0.0,100.0])
 
     if showplot:
         plt.show()
@@ -148,7 +152,9 @@ copy_numbers = sim_res["CN"]
 
 results = [simulation(system_state) for i in range(0, 20)]
 
+dirname = "Graphs_CNcontrol"
+Path(dirname).mkdir(parents=True, exist_ok=True)
 for i,sim_res in enumerate(results):
     mutation_loads = sim_res["ML"]
     copy_numbers = sim_res["CN"]
-    makePlot(copy_numbers, mutation_loads, filename = "Graphs_CNcontrol/mtDNA_" + str(i) + ".png")
+    makePlot(copy_numbers, mutation_loads, filename = os.path.join(dirname,"mtDNA_" + str(i) + ".png"))
