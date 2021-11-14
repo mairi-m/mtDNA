@@ -91,20 +91,18 @@ def makePlot(results, ML_distributions, CN_distributions, tmax = 5000, filename 
     # Declare variables
     times_to_record_final = []
     times_to_record = range(0,tmax,10)
-
-
         
     fig, (ax2, ax1) = plt.subplots(1, 2, figsize = (12, 6))
     fig.suptitle('Simulating mtDNA population dynamics')
 
     # Graph of mutation load/steps
     for plot in range(20):
-        ax1.plot((times_to_record),results[plot]["ML"], color = "black", alpha = 0.3)
-    ax1.plot((times_to_record), ML_distributions["M5"], color = "g", ls = "--")
-    ax1.plot((times_to_record), ML_distributions["M25"], color = "g", ls = "--")
-    ax1.plot((times_to_record), ML_distributions["M50"], color = "g", linewidth = "3")
-    ax1.plot((times_to_record), ML_distributions["M75"], color = "g", ls = "--")
-    ax1.plot((times_to_record), ML_distributions["M95"], color = "g", ls = "--")
+        ax1.plot((times_to_record),results[plot]["ML"], color = "black", alpha = 0.1)
+    ax1.plot((times_to_record), ML_distributions["d5"], color = "r", ls = "dotted")
+    ax1.plot((times_to_record), ML_distributions["d25"], color = "r", ls = "--")
+    ax1.plot((times_to_record), ML_distributions["d50"], color = "r", linewidth = "3")
+    ax1.plot((times_to_record), ML_distributions["d75"], color = "r", ls = "--")
+    ax1.plot((times_to_record), ML_distributions["d95"], color = "r", ls = "dotted")
     
     ax1.set_xlabel("Age (Steps)", fontsize = 15)
     ax1.set_ylabel("Mutation load", fontsize = 15)
@@ -114,12 +112,12 @@ def makePlot(results, ML_distributions, CN_distributions, tmax = 5000, filename 
 
     # Graph of copy number/steps
     for plot in range(20):
-        ax2.plot((times_to_record),results[plot]["CN"], color = "black", alpha = 0.3)
-    ax2.plot((times_to_record), CN_distributions["C5"], color = "g", ls = "--")
-    ax2.plot((times_to_record), CN_distributions["C25"], color = "g", ls = "--")
-    ax2.plot((times_to_record), CN_distributions["C50"], color = "g", linewidth = "3")
-    ax2.plot((times_to_record), CN_distributions["C75"], color = "g", ls = "--")
-    ax2.plot((times_to_record), CN_distributions["C95"], color = "g", ls = "--")
+        ax2.plot((times_to_record),results[plot]["CN"], color = "black", alpha = 0.1)
+    ax2.plot((times_to_record), CN_distributions["d5"], color = "r", ls = "dotted")
+    ax2.plot((times_to_record), CN_distributions["d25"], color = "r", ls = "--")
+    ax2.plot((times_to_record), CN_distributions["d50"], color = "r", linewidth = "3")
+    ax2.plot((times_to_record), CN_distributions["d75"], color = "r", ls = "--")
+    ax2.plot((times_to_record), CN_distributions["d95"], color = "r", ls = "dotted")
     
     ax2.set_xlabel("Age (Steps)", fontsize = 15)
     ax2.set_ylabel("Total copy number", fontsize = 15)
@@ -133,70 +131,28 @@ def makePlot(results, ML_distributions, CN_distributions, tmax = 5000, filename 
         plt.savefig(filename, dpi = 300, orientation = "landscape")
 
 
-def ML_percentiles(results, times_to_record):
+def percentiles(results, var = "ML"):
+    values = []
+    d5 = []
+    d25 = []
+    d50 = []
+    d75 = []
+    d95 = []
 
-    mutation_loads = []
-    Mdistribution5 = []
-    Mdistribution25 = []
-    Mdistribution50 = []
-    Mdistribution75 = []
-    Mdistribution95 = []
+    for i in range(len(results[0]["ML"])): # Assume all result objects have same length as first one
+        for j in range(len(results)):
+            values.append(results[j][var][i])
+        d5.append(numpy.percentile(values, 5))
+        d25.append(numpy.percentile(values, 25))
+        d50.append(numpy.percentile(values, 50))
+        d75.append(numpy.percentile(values, 75))
+        d95.append(numpy.percentile(values, 95))
 
-    for i in range(len(times_to_record)):
-
-        for j in range(20):
-            mutation_loads.append(results[j]["ML"][i])
-
-        dist5 = numpy.percentile(mutation_loads, 5)
-        dist25 = numpy.percentile(mutation_loads, 25)
-        dist50 = numpy.percentile(mutation_loads, 50)
-        dist75 = numpy.percentile(mutation_loads, 75)
-        dist95 = numpy.percentile(mutation_loads, 95)
-
-        Mdistribution5.append(dist5)
-        Mdistribution25.append(dist25)
-        Mdistribution50.append(dist50)
-        Mdistribution75.append(dist75)
-        Mdistribution95.append(dist95)
-
-    all_distributions = {"M5": Mdistribution5, "M25": Mdistribution25, "M50": Mdistribution50, "M75": Mdistribution75, "M95": Mdistribution95,}
-    return(all_distributions)
-
-
-def CN_percentiles(results, times_to_record):
-
-    copy_number = []
-    Cdistribution5 = []
-    Cdistribution25 = []
-    Cdistribution50 = []
-    Cdistribution75 = []
-    Cdistribution95 = []
-
-    for i in range(len(times_to_record)):
-
-        for j in range(20):
-            copy_number.append(results[j]["CN"][i])
-
-        dist5 = numpy.percentile(copy_number, 5)
-        dist25 = numpy.percentile(copy_number, 25)
-        dist50 = numpy.percentile(copy_number, 50)
-        dist75 = numpy.percentile(copy_number, 75)
-        dist95 = numpy.percentile(copy_number, 95)
-
-        Cdistribution5.append(dist5)
-        Cdistribution25.append(dist25)
-        Cdistribution50.append(dist50)
-        Cdistribution75.append(dist75)
-        Cdistribution95.append(dist95)
-
-    all_distributions = {"C5": Cdistribution5, "C25": Cdistribution25, "C50": Cdistribution50, "C75": Cdistribution75, "C95": Cdistribution95,}
+    all_distributions = {"d5": d5, "d25": d25, "d50": d50, "d75": d75, "d95": d95}
     return(all_distributions)
 
 
 ''' END OF FUNCTIONS'''
-
-
-
 
 class mtDNA():
     def __init__(self,unique_id,parent_id,mol_age = 0,r=0.01,d=0.01,status="wild-type"):
@@ -217,7 +173,6 @@ Nwt0 = 45
 Nmut0 = 15
 system_state = [mtDNA(unique_id=x,parent_id=-1,status="wild-type") for x in range(0,Nwt0)] + [mtDNA(unique_id=x,parent_id=-1,status="mutant") for x in range(0,Nmut0)]
 
-
 # Run simulation
 results = [simulation(system_state) for i in range(0, 20)]
 
@@ -225,8 +180,8 @@ dirname = "Multiple lines plots"
 Path(dirname).mkdir(parents = True, exist_ok = True)
 
 # Get distributions
-ML_distributions = ML_percentiles(results, times_to_record)
-CN_distributions = CN_percentiles(results, times_to_record)
+ML_distributions = percentiles(results,"ML")
+CN_distributions = percentiles(results,"CN")
 
 # Make plots
 makePlot(results, ML_distributions, CN_distributions, filename = os.path.join(dirname,"mtDNA_pop_20sims.png"))
