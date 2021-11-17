@@ -1,4 +1,4 @@
-# Title: Modelling mtDNA population dynamics
+# Title: Modelling mtDNA population dynamics - Inherit ML <50% (30%)
 # Author: Mairi MacIain
 # Date: 15th Oct 2021
 
@@ -101,7 +101,7 @@ def percentiles(results, var = "ML"):
 ''' Function to make plots'''
 
 
-def makePlot(results, ML_distributions, CN_distributions, tmax = 5000, filename = "Multiple lines plots/mtDNA_pop.png", showplot = False, showboth = True):
+def makePlot(results, ML_distributions, CN_distributions, Ntot0, runs, tmax = 5000, filename = "Multiple lines plots/mtDNA_pop.png", showplot = False, showboth = False):
 
     # Declare variables
     times_to_record_final = []
@@ -117,8 +117,8 @@ def makePlot(results, ML_distributions, CN_distributions, tmax = 5000, filename 
     fig.suptitle('Simulating mtDNA population dynamics')
 
     # Graph of mutation load/steps
-    for plot in range(20):
-        ax1.plot((times_to_record_y),results[plot]["ML"], color = "black", alpha = 0.1)
+    for plot in range(runs):
+        ax1.plot((times_to_record_y),results[plot]["ML"], color = "black", alpha = 0.08)
     ax1.plot((times_to_record_y), ML_distributions["d5"], color = "r", ls = ":")
     ax1.plot((times_to_record_y), ML_distributions["d25"], color = "r", ls = "--")
     ax1.plot((times_to_record_y), ML_distributions["d50"], color = "r", linewidth = "3")
@@ -132,8 +132,8 @@ def makePlot(results, ML_distributions, CN_distributions, tmax = 5000, filename 
     ax1.set_ylim([0.0, 1.0])
 
     # Graph of copy number/steps
-    for plot in range(20):
-        ax2.plot((times_to_record_y),results[plot]["CN"], color = "black", alpha = 0.1)
+    for plot in range(runs):
+        ax2.plot((times_to_record_y),results[plot]["CN"], color = "black", alpha = 0.08)
     ax2.plot((times_to_record_y), CN_distributions["d5"], color = "r", ls = ":")
     ax2.plot((times_to_record_y), CN_distributions["d25"], color = "r", ls = "--")
     ax2.plot((times_to_record_y), CN_distributions["d50"], color = "r", linewidth = "3")
@@ -142,9 +142,9 @@ def makePlot(results, ML_distributions, CN_distributions, tmax = 5000, filename 
     
     ax2.set_xlabel("Age (years)", fontsize = 15)
     ax2.set_ylabel("Total copy number", fontsize = 15)
-    ax2.set_xticks(list(range(0,int(tmax/365),1)))
+    ax2.set_xticks(list(range(0,round(tmax/365.0),1)))
     ax2.set_xlim([0,tmax/365])
-    ax2.set_ylim([0.0,100.0])
+    ax2.set_ylim([0.0,((Ntot0 *1.5) + 50.0)])
 
     if showplot:
         plt.show()
@@ -175,16 +175,18 @@ MAIN CODE
 '''
 # Initialise cell
 tmax = 5000
+runs = 35
 times_to_record = range(0,tmax,10)
-Nwt0 = 45
-Nmut0 = 15
+Nwt0 = 150
+Nmut0 = 50
+Ntot0 = Nwt0 + Nmut0
 system_state = [mtDNA(unique_id=x,parent_id=-1,status="wild-type") for x in range(0,Nwt0)] + [mtDNA(unique_id=x,parent_id=-1,status="mutant") for x in range(0,Nmut0)]
 
 
 # Run simulation
-results = [simulation(system_state) for i in range(0, 20)]
+results = [simulation(system_state, CN_upper = ((Nwt0+Nmut0)*1.5), CN_lower =((Nwt0+Nmut0)*0.5)) for i in range(0, runs)]
 
-dirname = "Multiple_lines_plots"
+dirname = "Analysis"
 Path(dirname).mkdir(parents = True, exist_ok = True)
 
 # Get distributions
@@ -192,6 +194,6 @@ ML_distributions = percentiles(results, "ML")
 CN_distributions = percentiles(results, "CN")
 
 # Make plots
-makePlot(results, ML_distributions, CN_distributions, filename = os.path.join(dirname,"mtDNA_pop.png"))
+makePlot(results, ML_distributions, CN_distributions, Ntot0, runs, filename = os.path.join(dirname,"mtDNA_modelling.png"))
 
 
