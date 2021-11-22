@@ -197,3 +197,29 @@ CN_distributions = percentiles(results, "CN")
 makePlot(results, ML_distributions, CN_distributions, Ntot0, runs, filename = os.path.join(dirname,"mtDNA_modelling.png"))
 
 
+## Simulate median mutation load dynamics for lots of initial conditions
+def sim_med(Nwt0, Nmut0,  times_to_record, runs=35, tmax = 5000):
+    Ntot0 = Nwt0 + Nmut0
+    system_state = [mtDNA(unique_id=x,parent_id=-1,status="wild-type") for x in range(0,Nwt0)] + [mtDNA(unique_id=x,parent_id=-1,status="mutant") for x in range(0,Nmut0)]
+    results = [simulation(system_state, CN_upper = ((Nwt0+Nmut0)*1.5), CN_lower =((Nwt0+Nmut0)*0.5)) for i in range(0, runs)]
+    ML_distributions = percentiles(results, "ML")
+    return(ML_distributions["d50"])
+
+
+def makeICs(CN,frac):
+    return((int(round(frac*CN)),int(round((1.0-frac)*CN))))
+
+ICs = [makeICs(200,frac) for frac in np.linspace(0.0,1.0,11)]
+
+sim_meds = [sim_med(IC[1],IC[0],times_to_record,runs,tmax) for IC in ICs]
+
+
+    
+    
+
+
+
+
+
+
+
