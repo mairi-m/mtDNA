@@ -9,6 +9,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from pathlib import Path
 import os
+import csv
 
 
 
@@ -107,17 +108,15 @@ def plot_med(times_to_record, sim_meds, Nwt0, filename):
 
     times_to_record_y = [tr/365.0 for tr in times_to_record]
 
-    for p in range(len(Nwt0)):
-        plt.plot(times_to_record_y, sim_meds[p], color = "red")
-
-    for p in range(len(Nwt0)):
+    for p,sm in enumerate(sim_meds):
+        plt.plot(times_to_record_y, sm, color = "red")
         IC = Nmut0[p] / (Nmut0[p] + Nwt0[p])
         plt.axhline(y = IC)
     
     plt.title("Medians of mutation loads")
     plt.xlabel("Age (years)", fontsize = 15)
     plt.ylabel("Mutation load", fontsize = 15)
-    plt.xticks(list(range(0,round(tmax/365.0),1)))
+    plt.xticks(list(range(0,round(tmax/365.0),5)))
     plt.xlim([0,tmax/365])
     plt.ylim([0.0, 1.0])
 
@@ -154,6 +153,19 @@ Path(dirname).mkdir(parents = True, exist_ok = True)
 
 
 sim_meds = sim_med(Nwt0,Nmut0,times_to_record,runs,tmax)
+
+# Save file to hard disk
+with open("sim_meds.csv", "w",newline="") as f:
+    wr = csv.writer(f)
+    wr.writerows(sim_meds)
+
+# Read them back in again (everything from here down can be moved to a separate file)
+with open("sim_meds.csv", "r") as read_obj:
+    # pass the file object to reader() to get the reader object
+    csv_reader = csv.reader(read_obj, quoting=csv.QUOTE_NONNUMERIC)
+    # Pass reader object to list() to get a list of lists
+    sim_meds = list(csv_reader)
+
 
 plot_med(times_to_record, sim_meds, Nwt0, filename = os.path.join(dirname,"medians(2).png"))
 
