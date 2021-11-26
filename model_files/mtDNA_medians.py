@@ -15,14 +15,14 @@ import os
 ''' Simulation function'''
 
 
-def simulation(system_state, tmax = 5000, CN_upper = 90, CN_lower = 30):
+def simulation(system_state, times_to_record, tmax = 5000, CN_upper = 90, CN_lower = 30):
     
     # Declare local variables
     system_states = []
     Nwt0 = len([mol for mol in system_state if mol.status=="wild-type"])
     Nmut0 = len([mol for mol in system_state if mol.status=="mutant"])
     current_id = Nwt0 + Nmut0
-    times_to_record = list(range(0,tmax,10))
+    #times_to_record = list(range(0,tmax,10))
 
     # Assume time step = 1
     t = 0
@@ -97,7 +97,7 @@ def sim_med(Nwt0, Nmut0,  times_to_record, runs=35, tmax = 5000):
 
     for i in range(len(Nwt0)):
         system_state = [mtDNA(unique_id=x,parent_id=-1,status="wild-type") for x in range(0,Nwt0[i])] + [mtDNA(unique_id=x,parent_id=-1,status="mutant") for x in range(0,Nmut0[i])]
-        results = [simulation(system_state, CN_upper = ((Nwt0[i]+Nmut0[i])*1.5), CN_lower =((Nwt0[i]+Nmut0[i])*0.5)) for j in range(0, runs)]
+        results = [simulation(system_state, times_to_record, tmax, CN_upper = ((Nwt0[i]+Nmut0[i])*1.5), CN_lower =((Nwt0[i]+Nmut0[i])*0.5)) for j in range(0, runs)]
         ML_distributions.append(percentiles(results, "ML"))
 
     return(ML_distributions)
@@ -143,8 +143,8 @@ class mtDNA():
 MAIN CODE
 '''
 # Initialise cell
-tmax = 5000
-runs = 200
+tmax = 30000
+runs = 300
 times_to_record = range(0,tmax,10)
 Nwt0 = [200, 180, 160, 140, 120, 100, 80, 60, 40, 20, 0]
 Nmut0 = [0, 20, 40, 60, 80, 100, 120, 140, 160, 180, 200]
