@@ -1,4 +1,4 @@
-# Title: Modelling mtDNA population dynamics - Inherit ML <50% (30%)
+# Title: Modelling mtDNA population dynamics
 # Author: Mairi MacIain
 # Date: 15th Oct 2021
 
