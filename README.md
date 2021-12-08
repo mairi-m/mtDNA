@@ -30,53 +30,5 @@ Mutated mtDNA can cause disease if they cannot carry out their function properly
 Mutated mtDNA molecules can cause disease because they code for many mitochondrial proteins.  If mutant mtDNA species reaches sufficiently high levels in the cell then these proteins will not be produced in sufficient quantities to support cell function. The result is mitochondrial dysfunction. Some primary mitochondrial diseases are [leigh syndrome](https://en.wikipedia.org/wiki/Leigh_syndrome), [mitochondrial myopathy](https://en.wikipedia.org/wiki/Mitochondrial_myopathy) and [Leber's hereditary optic neuropathy](https://en.wikipedia.org/wiki/Leber%27s_hereditary_optic_neuropathy). Mitochondrial dysfunction has also been connected to illness such as alzheimers, cancer and muscular dystrophy. Mitochondrial disease can have severe and untreatable consequences such as vision and hearing loss, difficulty walking and breathing, epilepsy, neurodegeneration and developmental defects.
 
 ## Modelling mtDNA
-It is important to model mtDNA to gain a better understanding of it so treatment for many different mitochondrial diseases can be developed. In this project we will create a model of skeletal muscle fiber with wild type and mutant mtDNA diffusing randomly. The model will show mtDNA being synthesised and degraded. It will also show perinuclei which are fixed in space and how the mtDNA interacts with them.
-
-![skeletal muscle fiber](images/skeletal_muscle_fiber_d.jpg)
-> mtDNA travels slowly longitudinally and quickly radially.
-
-## Tools
-We will create [an agent based model](https://en.wikipedia.org/wiki/Agent-based_model) using [python](https://www.python.org/) and the [MESA library](https://mesa.readthedocs.io/en/stable/). Python is a popular easy to read programming language which I already have experiance in. It can also be used with the MESA library for agent based modelling which is why we are using it.
-
-## Timescale
-
-In the beginning I split the project into 5 sections:
-- Meetings with Conor Lawless
-- Researching the biology behind the project
-- Learning how to use the mesa library
-- Creating the model
-- Documentation
-
-First I researched the biology to gain a better understanding of the project and then documented what I learned in github. I then began learning how to use the mesa library . I had meetings with Conor and added to the documentation throughout the project. 
-
-I used google sheets ([sheet linked here](https://docs.google.com/spreadsheets/d/1H-vyV8cI5vYHMRJBZxGlX5kHtQQPEzIrgFyDWQjZb1U/edit?usp=sharing)) to organise my time and ensure I spent long enough each section of the project to ensure each section was done thouroughly and was not skipped past quickly. The sheet also automatically keeps a running total of how many hours I have spent on the project.
-
-I considered using a [gannt chart](https://en.wikipedia.org/wiki/Gantt_chart) but each section apart from meetings and documentation happened seperately to reduce confusion so there would be no point as there is no overlap between sections.
-
-
-## Mesa tutorial
-
-I worked through the [mesa library tutorial](https://mesa.readthedocs.io/en/stable/tutorials/intro_tutorial.html), making sure to take time to understand what was going on and changing small bits of code to see what would happen. I saved each section of the tutorial in a different file so I could easily go back to look over them and have clear references if I needed one.
-
-The advanced tutorial was more focused on spacial modelling. The project will possibly not include any spacial modelling as it can be very complicated but it is something for future thought.
-
-I continued to play around a bit more with mesa trying to create a working model which would randomly print out the agents unique id but it didn't work. So i looked online for more tutorials and found an [infection model tutorial](https://dmnfarrell.github.io/bioinformatics/abm-mesa-python) which was very useful and helped solidify my knowlege.
-
-
-## The project
-
-Conor and I met and discussed what we were aiming towards more clearly. We decided to initially ignore mutations and spacial modelling so we could have a simpler start which we can work off of. He put some rough code in github while I worked on my own rough example. I worked off of my mesa tutorial exapmles and the infection model example to get my first version. 
-
-This version used code from the infection model which did not allow degraded agents to be removed but it did easily allow agents to be identified as wild-type of mutant. Conor's code allowed agents to be removed. None of our code gave a visual way of seeing the data. Our code also meant that the initial agents were created 1 every step. So if we had 20 initial agents then the model would only have 20 after 20 steps. This was not how I wanted the cell to work. I wanted it to have all the initial agents in the first step.
-
-Conor then put another version of his code on github which did not use mesa just python. It was easier to remove the agents from the code and printed a statement for every time and agent degraded or replicated. I then tried to use a mesa datacollector with his code to make a graph of the mtDNA population. We knew from the printed statements that all the agents were removed before the model was finished. The data collector didnt work as mesa models and agents must be used with it. Therefore i modified Conors code to use agent and model classes with a datacollector which would return the number of mtDNA agents after every step. This way all the initial agents are created in the first step as well. This did not work because MESA requires each agent to be created in a seperate step so you cannont initiate the cell with mtDNA so it is not an accurate representation of a cell. Because of this I will not be using MESA going forward to create the model so we can create a model as accurate as possible. I will still use my knowledge of pyplot from the mesa tutorial to create graphs showing the collected data.
-
-Going forward I will work of of conors code, making graphs, batch runs and making it more biologically accurate.
-
-
-## References
-http://mito.ncl.ac.uk/clonexp/clonal_expansion/
-
-
-
+It is important to model mtDNA to gain a better understanding of it so treatment for many different mitochondrial diseases can be developed. In this project we will create an agent based model of mtDNA population dynamics in a single cell. The model will show mtDNA being synthesised and degraded.
 
