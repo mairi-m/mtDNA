@@ -33,6 +33,6 @@ Mutated mtDNA molecules can cause disease because they code for many mitochondri
 It is important to model mtDNA to gain a better understanding of it so treatment for many different mitochondrial diseases can be developed. In this project we will create an agent based model of mtDNA population dynamics in a single cell. The model will show mtDNA being synthesised and degraded.
 
 ## Report
-After completeing the project I wrote a [report](CREST award report.pdf) detailing the background biology, plan, results, conclusion and evaluation.
+After completeing the project I wrote a [report](CREST_award_report.pdf) detailing the background biology, plan, results, conclusion and evaluation.
 
 
